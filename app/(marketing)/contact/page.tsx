@@ -2,6 +2,12 @@ import Section from "@/components/ui/Section";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
 
+export const metadata = {
+  title: "Contact",
+  description:
+    "Contact P.K. Lakhani & Co. for audit, taxation and compliance services in Gurugram.",
+};
+
 export default function ContactPage() {
   return (
     <main>
@@ -54,6 +60,11 @@ export default function ContactPage() {
               Call
             </Button>
           </div>
+          <iframe
+            src="https://www.google.com/maps?q=302%20JMD%20Galleria%20Sohna%20Road%20Sector%2048%20Gurugram&output=embed"
+            className="w-full h-[300px] rounded-lg border mt-6"
+            loading="lazy"
+          />
 
         </Container>
       </Section>

@@ -2,8 +2,9 @@ import Section from "@/components/ui/Section";
 import Container from "@/components/ui/Container";
 
 export const metadata = {
-  title: "About | P.K. Lakhani & Co.",
-  description: "Chartered Accountants firm established in 1994 based in Gurugram",
+  title: "About",
+  description:
+    "Established in 1994, P.K. Lakhani & Co. is a Chartered Accountants firm based in Gurugram.",
 };
 
 export default function AboutPage() {

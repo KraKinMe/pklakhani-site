@@ -2,6 +2,12 @@ import Section from "@/components/ui/Section";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
 
+export const metadata = {
+  title: "Services",
+  description:
+    "Audit, GST, taxation and advisory services for corporates and SMEs.",
+};
+
 export default function ServicesPage() {
   return (
     <main>

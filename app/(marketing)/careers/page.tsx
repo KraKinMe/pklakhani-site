@@ -3,6 +3,12 @@ import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
 import { getWhatsAppLink } from "@/utils/whatsapp";
 
+export const metadata = {
+  title: "Careers",
+  description:
+    "Explore career opportunities at P.K. Lakhani & Co. in audit, taxation and advisory.",
+};
+
 export default function CareersPage() {
   const form =
     "https://docs.google.com/forms/d/e/1FAIpQLSf0LUCcXhEC1SKWkEWlsmMKnOmUlhNoBzA1CRrPCCIzMDSeZw/viewform";
