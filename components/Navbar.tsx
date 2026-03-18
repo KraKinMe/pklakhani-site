@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import Container from "@/components/ui/Container";
+import { getWhatsAppLink } from "@/utils/whatsapp";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -66,7 +67,7 @@ export default function Navbar() {
 
             {/* WhatsApp */}
             <a
-              href="https://wa.me/918802805667"
+              href={getWhatsAppLink()}
               target="_blank"
               className="bg-green-600 text-white text-sm px-4 py-2 rounded-md"
             >

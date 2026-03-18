@@ -1,6 +1,7 @@
 import Section from "@/components/ui/Section";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
+import { getWhatsAppLink } from "@/utils/whatsapp";
 
 export default function ServicesPreview() {
   return (
@@ -44,7 +45,7 @@ export default function ServicesPreview() {
 
         <div className="mt-14 text-center">
           <Button
-            href="https://wa.me/918802805667"
+            href={getWhatsAppLink()}
             target="_blank"
           >
             Speak with Our Team

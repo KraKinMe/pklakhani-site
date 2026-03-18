@@ -1,5 +1,7 @@
 import Link from "next/link";
 import Container from "@/components/ui/Container";
+import { get } from "http";
+import { getWhatsAppLink } from "@/utils/whatsapp";
 
 export default function Footer() {
   return (
@@ -64,7 +66,7 @@ export default function Footer() {
             </div>
 
             <a
-              href="https://wa.me/918802805667"
+              href={getWhatsAppLink()}
               target="_blank"
               className="inline-block mt-5 bg-green-600 text-white text-sm px-5 py-2.5 rounded-md hover:bg-green-700 transition"
             >

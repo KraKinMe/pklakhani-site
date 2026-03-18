@@ -1,9 +1,9 @@
 import Section from "@/components/ui/Section";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
+import { getWhatsAppLink } from "@/utils/whatsapp";
 
 export default function CareersPage() {
-  const whatsapp = `https://wa.me/918802805667?text=Hi,%20I%20want%20to%20apply`;
   const form =
     "https://docs.google.com/forms/d/e/1FAIpQLSf0LUCcXhEC1SKWkEWlsmMKnOmUlhNoBzA1CRrPCCIzMDSeZw/viewform";
 
@@ -25,7 +25,7 @@ export default function CareersPage() {
         <Container size="sm">
           <div className="flex justify-center gap-4 flex-wrap">
 
-            <Button href={whatsapp} target="_blank">
+            <Button href={getWhatsAppLink("Hi, I am interested in the career opportunity.")} target="_blank">
               Apply via WhatsApp
             </Button>
 

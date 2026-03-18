@@ -1,40 +1,6 @@
 @import "tailwindcss";
 
-:root {
-  --primary: #0F172A;
-  --accent: #C6A25E;
-  --text: #1E293B;
-  --muted: #64748B;
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: 'Inter', sans-serif;
-}
-
-::selection {
-  background: #C9A14A;
-  color: white;
-}
-
-/* ===== COLORS ===== */
+/* ===== ROOT VARIABLES ===== */
 :root {
   --color-primary: #0B1F3A;
   --color-accent: #C9A14A;
@@ -43,10 +9,22 @@ body {
   --color-border: #D1D5DB;
 }
 
+/* Prevent browser auto dark mode */
+html {
+  color-scheme: light;
+}
+
 /* ===== BASE ===== */
 body {
   font-family: 'Inter', sans-serif;
   color: var(--color-text);
+  background: white;
+}
+
+/* ===== SELECTION ===== */
+::selection {
+  background: var(--color-accent);
+  color: white;
 }
 
 /* ===== TYPOGRAPHY ===== */
@@ -105,6 +83,6 @@ body {
   display: block;
   width: 48px;
   height: 2px;
-  background: #C9A14A;
+  background: var(--color-accent);
   margin: 10px auto 0;
 }
