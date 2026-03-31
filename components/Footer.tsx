@@ -14,8 +14,9 @@ export default function Footer() {
           {/* Firm */}
           <div>
             <h3 className="font-semibold tracking-tight text-lg">
-              {SITE.name.split(" ")[0]}{" "}
-              <span className="text-[#C9A14A]">& Co.</span>
+              P.K.{" "}
+              <span className="text-[#C9A14A]">Lakhani</span>{" "}
+              & Co.
             </h3>
 
             <p className="text-sm text-gray-300 mt-4 leading-relaxed">

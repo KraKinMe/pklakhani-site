@@ -16,7 +16,7 @@ export const SITE = {
   },
 
   address: {
-    line: "302, JMD Galleria, Sohna Road, Sector 48, Gurugram",
+    line: "302, JMD Galleria, Sohna Road, Sector 48, Gurugram, Haryana, India",
   },
 
   links: {
