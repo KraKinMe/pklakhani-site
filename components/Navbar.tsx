@@ -5,6 +5,8 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import Container from "@/components/ui/Container";
 import { getWhatsAppLink } from "@/utils/whatsapp";
+import { SITE } from "@/config/site";
+import { MESSAGES } from "@/config/messages";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -26,7 +28,8 @@ export default function Navbar() {
           {/* Brand */}
           <Link href="/" className="flex flex-col leading-tight">
             <span className="font-semibold tracking-tight text-base">
-              P.K. Lakhani <span className="text-[#C9A14A]">& Co.</span>
+              {SITE.name.split(" ")[0]}{" "}
+              <span className="text-[#C9A14A]">& Co.</span>
             </span>
             <span className="text-xs text-gray-300">
               Chartered Accountants • Since 1994
@@ -59,7 +62,7 @@ export default function Navbar() {
 
             {/* Call */}
             <a
-              href="tel:+919811115617"
+              href={`tel:${SITE.contact.phone}`}
               className="hidden sm:inline text-sm text-gray-300 hover:text-white"
             >
               Call
@@ -67,7 +70,7 @@ export default function Navbar() {
 
             {/* WhatsApp */}
             <a
-              href={getWhatsAppLink()}
+              href={getWhatsAppLink(MESSAGES.general)}
               target="_blank"
               className="bg-green-600 text-white text-sm px-4 py-2 rounded-md"
             >
@@ -105,14 +108,14 @@ export default function Navbar() {
             <div className="border-t border-white/10 pt-4 space-y-3">
 
               <a
-                href="tel:+919811115617"
+                href={`tel:${SITE.contact.phone}`}
                 className="block text-gray-300"
               >
                 Call
               </a>
 
               <a
-                href="mailto:pradeep.lakhani@gmail.com"
+                href={`mailto:${SITE.contact.email}`}
                 className="block text-gray-300"
               >
                 Email

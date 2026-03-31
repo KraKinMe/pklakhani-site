@@ -1,2 +1,6 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://pklakhani.com/sitemap.xml
+
+Host: https://pklakhani.com

@@ -1,6 +1,8 @@
 import Link from "next/link";
 import Container from "@/components/ui/Container";
 import { getWhatsAppLink } from "@/utils/whatsapp";
+import { SITE } from "@/config/site";
+import { MESSAGES } from "@/config/messages";
 
 export default function Footer() {
   return (
@@ -12,7 +14,8 @@ export default function Footer() {
           {/* Firm */}
           <div>
             <h3 className="font-semibold tracking-tight text-lg">
-              P.K. Lakhani <span className="text-[#C9A14A]">& Co.</span>
+              {SITE.name.split(" ")[0]}{" "}
+              <span className="text-[#C9A14A]">& Co.</span>
             </h3>
 
             <p className="text-sm text-gray-300 mt-4 leading-relaxed">
@@ -23,7 +26,6 @@ export default function Footer() {
             <p className="text-sm text-gray-400 mt-4">
               Established in 1994
             </p>
-
           </div>
 
           {/* Navigation */}
@@ -49,27 +51,27 @@ export default function Footer() {
             <div className="text-sm text-gray-400 space-y-3">
               
               <p>
-                302, JMD Galleria, Sohna Road, <br />
-                Sector 48, Gurugram, Haryana, India
+                {SITE.address.line}
               </p>
 
-              <a href="tel:+919811115617" className="block hover:text-white">
-                +91 98111 15617
+              <a
+                href={`tel:${SITE.contact.phone}`}
+                className="block hover:text-white"
+              >
+                {SITE.contact.phone}
               </a>
 
               <a
-                href="mailto:pradeep.lakhani@gmail.com"
+                href={`mailto:${SITE.contact.email}`}
                 className="block hover:text-white"
               >
-                pradeep.lakhani@gmail.com
+                {SITE.contact.email}
               </a>
 
             </div>
 
             <a
-              href={getWhatsAppLink(
-                "Hi, I would like to connect regarding audit, taxation, or compliance services."
-              )}
+              href={getWhatsAppLink(MESSAGES.general)}
               target="_blank"
               className="inline-block mt-5 bg-green-600 text-white text-sm px-5 py-2.5 rounded-md hover:bg-green-700 transition"
             >
@@ -87,7 +89,7 @@ export default function Footer() {
 
       {/* Copyright */}
       <div className="text-center text-xs text-gray-500 pb-6">
-        © {new Date().getFullYear()} P.K. Lakhani & Co. All rights reserved.
+        © {new Date().getFullYear()} {SITE.name}. All rights reserved.
       </div>
     </footer>
   );

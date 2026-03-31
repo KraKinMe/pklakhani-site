@@ -2,12 +2,10 @@ import Section from "@/components/ui/Section";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
 import { getWhatsAppLink } from "@/utils/whatsapp";
+import { MESSAGES } from "@/config/messages";
+import { generateMeta } from "@/config/meta";
 
-export const metadata = {
-  title: "Careers",
-  description:
-    "Explore career opportunities at P.K. Lakhani & Co. in audit, taxation and advisory.",
-};
+export const metadata = generateMeta("careers");
 
 export default function CareersPage() {
   const form =
@@ -47,7 +45,7 @@ export default function CareersPage() {
             <div className="mt-10 flex justify-center gap-4 flex-wrap">
 
               <Button
-                href={getWhatsAppLink("Hi, I am interested in career opportunities at P.K. Lakhani & Co.")}
+                href={getWhatsAppLink(MESSAGES.careers)}
                 target="_blank"
               >
                 Apply via WhatsApp

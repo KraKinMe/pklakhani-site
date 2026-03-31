@@ -1,12 +1,12 @@
 import Section from "@/components/ui/Section";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
+import { SITE } from "@/config/site";
+import { MESSAGES } from "@/config/messages";
+import { getWhatsAppLink } from "@/utils/whatsapp";
+import { generateMeta } from "@/config/meta";
 
-export const metadata = {
-  title: "Contact",
-  description:
-    "Contact P.K. Lakhani & Co. for audit, taxation and compliance services in Gurugram.",
-};
+export const metadata = generateMeta("contact");
 
 export default function ContactPage() {
   return (
@@ -31,37 +31,52 @@ export default function ContactPage() {
             <div>
               <h3 className="font-semibold">Office Address</h3>
               <p className="text-sm text-gray-600">
-                302, JMD Galleria, Sohna Road, Sector 48, Gurugram, Haryana, India
+                {SITE.address.line}
               </p>
             </div>
 
             <div>
               <h3 className="font-semibold">Phone</h3>
-              <a href="tel:+919811115617" className="text-sm text-gray-600">
-                +91 98111 15617
+              <a
+                href={`tel:${SITE.contact.phone}`}
+                className="text-sm text-gray-600"
+              >
+                {SITE.contact.phone}
               </a>
             </div>
 
             <div>
               <h3 className="font-semibold">Email</h3>
-              <a href="mailto:pradeep.lakhani@gmail.com" className="text-sm text-gray-600">
-                pradeep.lakhani@gmail.com
+              <a
+                href={`mailto:${SITE.contact.email}`}
+                className="text-sm text-gray-600"
+              >
+                {SITE.contact.email}
               </a>
             </div>
 
           </div>
 
           <div className="mt-8 flex gap-4 flex-wrap">
-            <Button href="https://wa.me/918802805667" target="_blank">
+            <Button
+              href={getWhatsAppLink(MESSAGES.general)}
+              target="_blank"
+            >
               WhatsApp
             </Button>
 
-            <Button href="tel:+919811115617" variant="secondary">
+            <Button
+              href={`tel:${SITE.contact.phone}`}
+              variant="secondary"
+            >
               Call
             </Button>
           </div>
+
           <iframe
-            src="https://www.google.com/maps?q=302%20JMD%20Galleria%20Sohna%20Road%20Sector%2048%20Gurugram&output=embed"
+            src={`https://www.google.com/maps?q=${encodeURIComponent(
+              SITE.address.line
+            )}&output=embed`}
             className="w-full h-[300px] rounded-lg border mt-6"
             loading="lazy"
           />

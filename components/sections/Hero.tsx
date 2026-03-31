@@ -2,6 +2,8 @@ import Section from "@/components/ui/Section";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
 import { getWhatsAppLink } from "@/utils/whatsapp";
+import { MESSAGES } from "@/config/messages";
+import { SITE } from "@/config/site";
 
 export default function Hero() {
   return (
@@ -42,9 +44,7 @@ export default function Hero() {
 
               {/* WhatsApp CTA */}
               <Button
-                href={getWhatsAppLink(
-                  "Hi, I want to schedule a consultation regarding audit/tax services."
-                )}
+                href={getWhatsAppLink(MESSAGES.consultation)}
                 target="_blank"
               >
                 <span className="flex items-center gap-2">
@@ -58,12 +58,15 @@ export default function Hero() {
               </Button>
 
               {/* Secondary Actions */}
-              <Button href="tel:+919811115617" variant="secondary-dark">
+              <Button
+                href={`tel:${SITE.contact.phone}`}
+                variant="secondary-dark"
+              >
                 Call
               </Button>
 
               <Button
-                href="mailto:pradeep.lakhani@gmail.com"
+                href={`mailto:${SITE.contact.email}`}
                 variant="secondary-dark"
               >
                 Email

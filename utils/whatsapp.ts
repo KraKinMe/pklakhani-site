@@ -1,9 +1,5 @@
-const PHONE = "918802805667";
+import { SITE } from "@/config/site";
 
-const DEFAULT_MESSAGE =
-  "Hi, I came across your website and would like to discuss my requirement.";
-
-export function getWhatsAppLink(message?: string) {
-  const text = encodeURIComponent(message || DEFAULT_MESSAGE);
-  return `https://wa.me/${PHONE}?text=${text}`;
+export function getWhatsAppLink(message: string) {
+  return `${SITE.links.whatsappBase}${SITE.contact.whatsapp}?text=${encodeURIComponent(message)}`;
 }

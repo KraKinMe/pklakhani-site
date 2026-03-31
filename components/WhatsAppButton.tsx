@@ -1,17 +1,20 @@
 import { getWhatsAppLink } from "@/utils/whatsapp";
+import { MESSAGES } from "@/config/messages";
+
+type MessageKey = keyof typeof MESSAGES;
 
 export default function WhatsAppButton({
-  message,
+  messageKey = "general",
   label = "Chat with us",
   showIcon = true,
 }: {
-  message?: string;
+  messageKey?: MessageKey;
   label?: string;
   showIcon?: boolean;
 }) {
   return (
     <a
-      href={getWhatsAppLink(message)}
+      href={getWhatsAppLink(MESSAGES[messageKey])}
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}

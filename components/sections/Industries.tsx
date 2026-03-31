@@ -1,15 +1,6 @@
 import Section from "@/components/ui/Section";
 import Container from "@/components/ui/Container";
-
-const industries = [
-  "Automobiles",
-  "Information Technology",
-  "Real Estate",
-  "Financial Services",
-  "Hospitality",
-  "Manufacturing",
-  "Telecom",
-];
+import { INDUSTRIES } from "@/config/content";
 
 export default function Industries() {
   return (
@@ -28,7 +19,7 @@ export default function Industries() {
 
           <div className="mt-10 flex flex-wrap justify-center gap-4">
 
-            {industries.map((item) => (
+            {INDUSTRIES.map((item) => (
               <span
                 key={item}
                 className="px-5 py-2.5 text-sm font-medium text-gray-800 

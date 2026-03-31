@@ -1,11 +1,8 @@
 import Section from "@/components/ui/Section";
 import Container from "@/components/ui/Container";
+import { generateMeta } from "@/config/meta";
 
-export const metadata = {
-  title: "About",
-  description:
-    "Established in 1994, P.K. Lakhani & Co. is a Chartered Accountants firm based in Gurugram.",
-};
+export const metadata = generateMeta("about");
 
 export default function AboutPage() {
   return (
@@ -101,19 +98,6 @@ export default function AboutPage() {
           </Container>
         </div>
       </Section>
-
-      {/* ICAI
-      <Section>
-        <div className="text-center">
-          <Container size="sm">
-
-            <p className="text-sm text-gray-500">
-              Member Firm — Institute of Chartered Accountants of India
-            </p>
-
-          </Container>
-        </div>
-      </Section> */}
 
     </main>
   );

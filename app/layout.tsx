@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+
 import Navbar from "@/components/Navbar";
-import WhatsAppButton from "@/components/WhatsAppButton";
 import Footer from "@/components/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
+
+import { SITE } from "@/config/site";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -14,14 +18,17 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata = {
-  metadataBase: new URL("https://pklakhani.com"),
+export const metadata: Metadata = {
+  metadataBase: new URL(SITE.baseUrl),
+
   title: {
-    default: "P.K. Lakhani & Co. | Chartered Accountants",
-    template: "%s | P.K. Lakhani & Co.",
+    default: `${SITE.name} | Chartered Accountants`,
+    template: `%s | ${SITE.name}`,
   },
+
   description:
     "Chartered Accountants firm in Gurugram providing audit, taxation, GST and advisory services.",
+
   keywords: [
     "Chartered Accountant Gurugram",
     "CA Firm India",
@@ -29,42 +36,50 @@ export const metadata = {
     "GST Compliance",
     "Tax Consultant",
   ],
+
   openGraph: {
-    title: "P.K. Lakhani & Co.",
+    title: SITE.name,
     description:
       "Audit, taxation and advisory services for corporates and SMEs.",
-    url: "https://pklakhani.com",
-    siteName: "P.K. Lakhani & Co.",
+    url: SITE.baseUrl,
+    siteName: SITE.name,
     locale: "en_IN",
     type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: SITE.name,
+    description:
+      "Audit, taxation and advisory services for corporates and SMEs.",
   },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-
+        {/* Structured Data (SEO) */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "AccountingService",
-              name: "P.K. Lakhani & Co.",
-              url: "https://pklakhani.com",
-              telephone: "+91-9811115617",
-              email: "pradeep.lakhani@gmail.com",
+              name: SITE.name,
+              url: SITE.baseUrl,
+              telephone: SITE.contact.phone,
+              email: SITE.contact.email,
               foundingDate: "1994",
               address: {
                 "@type": "PostalAddress",
-                streetAddress: "302, JMD Galleria, Sohna Road, Sector 48",
+                streetAddress: SITE.address.line,
                 addressLocality: "Gurugram",
                 addressRegion: "Haryana",
                 addressCountry: "IN",
@@ -77,6 +92,7 @@ export default function RootLayout({
             }),
           }}
         />
+
         <Navbar />
         {children}
         <Footer />
