@@ -104,14 +104,31 @@ export default function AboutPage() {
 
       {/* ICAI */}
       <Section>
-        <div className="text-center">
-          <Container size="sm">
+        <div className="relative overflow-hidden">
 
-            <p className="text-sm text-gray-500">
-              Member Firm — Institute of Chartered Accountants of India
-            </p>
+          {/* Background */}
+          <div className="absolute inset-0 bg-gradient-to-b from-gray-50 to-white"></div>
 
-          </Container>
+          <div className="relative text-center">
+            <Container size="sm">
+
+              {/* Logo */}
+              <div className="flex justify-center mb-6">
+                <img
+                  src="/images/icai.png" // rename your uploaded image to this
+                  alt="ICAI Member"
+                  className="w-24 md:w-28 opacity-90"
+                />
+              </div>
+
+              {/* Text */}
+              <p className="text-sm text-gray-600 font-medium">
+                Member Firm — Institute of Chartered Accountants of India
+              </p>
+
+            </Container>
+          </div>
+
         </div>
       </Section>
 
