@@ -11,36 +11,61 @@ export const metadata = {
 
 export default function CareersPage() {
   const form =
-    "https://docs.google.com/forms/d/e/1FAIpQLSf0LUCcXhEC1SKWkEWlsmMKnOmUlhNoBzA1CRrPCCIzMDSeZw/viewform";
+    "https://docs.google.com/forms/d/e/1FAIpQLSdKeW8w7G_LzEqNntfKIYgxs7_PdU8k-REx4NRFGHanFfjO2Q/viewform?usp=publish-editor";
 
   return (
     <main>
 
+      {/* HERO */}
       <Section dark>
-        <Container size="sm">
-          <h1 className="heading heading-accent text-3xl text-center">
-            Careers
-          </h1>
-          <p className="mt-4 text-gray-300 text-center">
-            Join us for professional growth in audit, taxation and advisory.
-          </p>
-        </Container>
+        <div className="text-center">
+          <Container size="sm">
+
+            <h1 className="heading heading-accent text-3xl md:text-4xl">
+              Careers
+            </h1>
+
+            <p className="mt-4 text-gray-300 max-w-2xl mx-auto">
+              Join our team and build a strong foundation in audit, taxation, and advisory
+              while working with experienced professionals.
+            </p>
+
+          </Container>
+        </div>
       </Section>
 
+      {/* VALUE + CTA */}
       <Section>
-        <Container size="sm">
-          <div className="flex justify-center gap-4 flex-wrap">
+        <div className="text-center">
+          <Container size="sm">
 
-            <Button href={getWhatsAppLink("Hi, I am interested in the career opportunity.")} target="_blank">
-              Apply via WhatsApp
-            </Button>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              We are always looking for motivated individuals who are eager to learn,
+              take responsibility, and grow in a professional environment.
+            </p>
 
-            <Button href={form} variant="secondary" target="_blank">
-              Apply via Form
-            </Button>
+            {/* ACTIONS */}
+            <div className="mt-10 flex justify-center gap-4 flex-wrap">
 
-          </div>
-        </Container>
+              <Button
+                href={getWhatsAppLink("Hi, I am interested in career opportunities at P.K. Lakhani & Co.")}
+                target="_blank"
+              >
+                Apply via WhatsApp
+              </Button>
+
+              <Button
+                href={form}
+                variant="secondary"
+                target="_blank"
+              >
+                Apply via Form
+              </Button>
+
+            </div>
+
+          </Container>
+        </div>
       </Section>
 
     </main>

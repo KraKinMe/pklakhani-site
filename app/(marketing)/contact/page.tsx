@@ -31,7 +31,7 @@ export default function ContactPage() {
             <div>
               <h3 className="font-semibold">Office Address</h3>
               <p className="text-sm text-gray-600">
-                302, JMD Galleria, Sohna Road, Sector 48, Gurugram
+                302, JMD Galleria, Sohna Road, Sector 48, Gurugram, Haryana, India
               </p>
             </div>
 

@@ -24,9 +24,6 @@ export default function Footer() {
               Established in 1994
             </p>
 
-            <p className="text-sm text-gray-400 mt-2">
-              CA Pradeep Lakhani
-            </p>
           </div>
 
           {/* Navigation */}

@@ -14,16 +14,20 @@ export default function WhatsAppButton({
       href={getWhatsAppLink(message)}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-6 right-6 bg-green-600 text-white px-6 py-3 rounded-full shadow-xl hover:bg-green-700 hover:scale-105 transition flex items-center gap-2"
+      aria-label={label}
+      className="fixed bottom-6 right-6 bg-green-600 text-white px-5 py-3 rounded-full shadow-xl hover:bg-green-700 hover:scale-105 transition flex items-center gap-2 z-50"
     >
       {showIcon && (
         <img
           src="/icons/whatsapp.svg"
-          alt="WhatsApp"
+          alt=""
           className="w-5 h-5 shrink-0"
         />
       )}
-      {label}
+
+      <span className="text-sm font-medium">
+        {label}
+      </span>
     </a>
   );
 }
