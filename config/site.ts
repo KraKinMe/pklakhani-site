@@ -3,6 +3,12 @@ export const SITE = {
 
   baseUrl: "https://pklakhani.com",
 
+  brand: {
+    prefix: "P.K.",
+    highlight: "Lakhani",
+    suffix: "& Co.",
+  },
+
   contact: {
     phone: "+919811115617",
     email: "pradeep.lakhani@gmail.com",

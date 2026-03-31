@@ -28,8 +28,11 @@ export default function Navbar() {
           {/* Brand */}
           <Link href="/" className="flex flex-col leading-tight">
             <span className="font-semibold tracking-tight text-base">
-              {SITE.name.split(" ")[0]}{" "}
-              <span className="text-[#C9A14A]">& Co.</span>
+              {SITE.brand.prefix}{" "}
+              <span className="text-[#C9A14A]">
+                {SITE.brand.highlight}
+              </span>{" "}
+              {SITE.brand.suffix}
             </span>
             <span className="text-xs text-gray-300">
               Chartered Accountants • Since 1994
