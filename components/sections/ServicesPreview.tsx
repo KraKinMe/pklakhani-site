@@ -9,8 +9,8 @@ export default function ServicesPreview() {
       <Container>
 
         {/* Heading */}
-        <div className="max-w-3xl mx-auto text-center mb-12">
-          <h2 className="heading heading-accent text-2xl md:text-3xl text-gray-900 !text-center">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <h2 className="heading heading-accent text-2xl md:text-3xl text-gray-900">
             Our Core Services
           </h2>
 
@@ -21,7 +21,7 @@ export default function ServicesPreview() {
         </div>
 
         {/* Cards */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
 
           {/* 1 */}
           <div className="p-6 border border-gray-300 rounded-lg bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg hover:border-black text-center">
@@ -78,7 +78,7 @@ export default function ServicesPreview() {
         </div>
 
         {/* CTA */}
-        <div className="mt-14 text-center">
+        <div className="mt-16 text-center">
           <Button
             href={getWhatsAppLink(
               "Hi, I would like to discuss your audit, taxation, or accounting services."
