@@ -5,30 +5,47 @@ import { getWhatsAppLink } from "@/utils/whatsapp";
 
 export default function Hero() {
   return (
-    <Section dark>
-      <Container size="sm">
+    <Section className="relative overflow-hidden">
 
-        <p className="text-sm text-gray-300 mb-4 text-center">
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <img
+          src="/images/hero_ca.png"
+          alt="Chartered Accountant Meeting"
+          className="w-full h-full object-cover"
+        />
+
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40"></div>
+      </div>
+
+      {/* Content */}
+      <Container size="sm" className="relative z-10 text-center text-white">
+
+        <p className="text-sm text-gray-300 mb-4">
           Chartered Accountants • Established 1994 • Gurugram
         </p>
 
-        <h1 className="heading text-4xl md:text-5xl text-center">
-          Audit, Tax & Compliance
-          <br />
-          for Growing Enterprises
+        <h1 className="text-4xl md:text-5xl font-bold leading-tight">
+          Chartered Accountants for SMEs & Corporates
+          <span className="block text-[#C9A14A] mt-2">
+            Audit, Tax & Strategic Advisory
+          </span>
         </h1>
 
-        <p className="mt-6 text-lg text-gray-300 text-center">
-          We assist corporates and SMEs with statutory audits, taxation and regulatory compliance.
+        <p className="mt-6 text-lg text-gray-200 max-w-2xl mx-auto">
+          Enabling corporates and SMEs with expert statutory audit, taxation, 
+          and regulatory compliance services.
         </p>
 
         <div className="mt-8 flex justify-center gap-4 flex-wrap">
-          
+
           <Button
             href={getWhatsAppLink()}
             target="_blank"
+            variant="secondary-dark"
           >
-            Discuss Your Requirement
+            Schedule a Consultation
           </Button>
 
           <Button href="tel:+91981115617" variant="secondary-dark">
@@ -41,8 +58,8 @@ export default function Hero() {
 
         </div>
 
-        <div className="mt-8 flex justify-center gap-6 text-sm text-gray-400 flex-wrap">
-          <span>30+ Years Experience</span>
+        <div className="mt-8 flex justify-center gap-6 text-sm text-gray-300 flex-wrap">
+          <span>3+ Decades of Experience</span>
           <span>Pan India Services</span>
           <span>Corporate & SME Focus</span>
         </div>
@@ -51,3 +68,6 @@ export default function Hero() {
     </Section>
   );
 }
+
+
+
