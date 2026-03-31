@@ -26,8 +26,7 @@ export default function CareersPage() {
             </h1>
 
             <p className="mt-4 text-gray-300 max-w-2xl mx-auto">
-              Join our team and build a strong foundation in audit, taxation, and advisory
-              while working with experienced professionals.
+              Join us to Kick Start your Professional Career.
             </p>
 
           </Container>

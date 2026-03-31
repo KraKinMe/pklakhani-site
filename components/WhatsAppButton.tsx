@@ -2,7 +2,7 @@ import { getWhatsAppLink } from "@/utils/whatsapp";
 
 export default function WhatsAppButton({
   message,
-  label = "Chat with CA",
+  label = "Chat with us",
   showIcon = true,
 }: {
   message?: string;
