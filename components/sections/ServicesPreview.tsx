@@ -8,22 +8,20 @@ export default function ServicesPreview() {
     <Section>
       <Container>
 
-        {/* Center wrapper */}
-        <div className="text-center max-w-4xl mx-auto">
-
+        {/* Heading */}
+        <div className="text-center max-w-3xl mx-auto mb-12">
           <h2 className="heading heading-accent text-2xl md:text-3xl text-gray-900">
             Our Core Services
           </h2>
 
-          <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
+          <p className="mt-4 text-gray-600">
             Comprehensive audit, taxation, and advisory solutions designed to ensure compliance,
             optimize financial performance, and support business growth.
           </p>
-
         </div>
 
         {/* Cards */}
-        <div className="mt-12 max-w-6xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
 
           {/* 1 */}
           <div className="p-6 border border-gray-300 rounded-lg bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg hover:border-black text-center">
