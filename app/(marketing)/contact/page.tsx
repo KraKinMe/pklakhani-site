@@ -37,7 +37,7 @@ export default function ContactPage() {
 
             <div>
               <h3 className="font-semibold">Phone</h3>
-              <a href="tel:+91981115617" className="text-sm text-gray-600">
+              <a href="tel:+919811115617" className="text-sm text-gray-600">
                 +91 98111 15617
               </a>
             </div>
@@ -56,7 +56,7 @@ export default function ContactPage() {
               WhatsApp
             </Button>
 
-            <Button href="tel:+91981115617" variant="secondary">
+            <Button href="tel:+919811115617" variant="secondary">
               Call
             </Button>
           </div>

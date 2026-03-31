@@ -59,7 +59,7 @@ export default function Navbar() {
 
             {/* Call */}
             <a
-              href="tel:+91981115617"
+              href="tel:+919811115617"
               className="hidden sm:inline text-sm text-gray-300 hover:text-white"
             >
               Call
@@ -105,7 +105,7 @@ export default function Navbar() {
             <div className="border-t border-white/10 pt-4 space-y-3">
 
               <a
-                href="tel:+91981115617"
+                href="tel:+919811115617"
                 className="block text-gray-300"
               >
                 Call

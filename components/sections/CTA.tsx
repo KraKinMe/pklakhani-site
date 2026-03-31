@@ -30,7 +30,7 @@ export default function CTA() {
             </Button>
 
             <Button
-              href="tel:+91981115617"
+              href="tel:+919811115617"
               variant="secondary-dark"
             >
               Call Now

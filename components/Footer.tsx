@@ -53,7 +53,7 @@ export default function Footer() {
                 Sector 48, Gurugram, Haryana, India
               </p>
 
-              <a href="tel:+91981115617" className="block hover:text-white">
+              <a href="tel:+919811115617" className="block hover:text-white">
                 +91 98111 15617
               </a>
 
