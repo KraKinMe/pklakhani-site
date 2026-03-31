@@ -4,6 +4,7 @@ import Button from "@/components/ui/Button";
 import { getWhatsAppLink } from "@/utils/whatsapp";
 import { MESSAGES } from "@/config/messages";
 import { SITE } from "@/config/site";
+import Image from "next/image";
 
 export default function Hero() {
   return (
@@ -11,10 +12,14 @@ export default function Hero() {
 
       {/* Background Image */}
       <div className="absolute inset-0">
-        <img
-          src="/images/hero_ca.png"
+        <Image
+          src="/images/hero_ca.webp"
           alt="Chartered Accountant Meeting"
-          className="w-full h-full object-cover"
+          fill
+          priority
+          quality={80}
+          sizes="100vw"
+          className="object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40"></div>
       </div>
