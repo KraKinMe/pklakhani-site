@@ -17,11 +17,15 @@ export default function Hero() {
           alt="Chartered Accountant Meeting"
           fill
           priority
-          quality={80}
+          quality={75}
           sizes="100vw"
+          placeholder="blur"
+          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAKCAIAAAAy3EnLAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAB9UlEQVR4nAHqARX+AP39+Ozi0O3m2+br797s8bm+vqm+x8rk7tHm8ZalsYibqbTT5bnN3M7i78Tf7rHX6wD9/vbu4Mvq5NXu7u3x8u6+wsCwwcfZ6vLa6vKeqrKRnKcuKzIkLTfH4e/L4u7S4+0A+/vv49bC6+DU6+ri4+Tgvb6+t8LE6O7y5uzsxbu7lYqCbEQ2Ujkz0OTuzeLrzOHpAObSt9HEr+Lc0KCMf6uJeLarnYB4c7mtpMPIx72kmnxVQn57fE9ARV5zjsLL0MPHwwDIqYerlH2wlYOSgXeccFqjk4NhUUmHcmbCwLqurKlKOzZkcYUnP2YAHjtMW2q5uLEAhXJhdGZYhXlrHTVMSFtphX9zRjozeGtqjoyHd3h1TEtRHEFtAydNABEuBxswXVZOAJKEaI2AcIJ9aQ4rRgApSGBpaWpWTpN0bHx8fFJXZQMbMwQYMAAYOAAIJgAPKrKijgBsbF1pZV1taWQJL1AAAB4pMjlQQ0B+RzM3PEYgJS8RFBMbHiMAIkUAAiUAECyThXYAtq+mvLqzo6qwAB9AAAAakot6UEg9RTkvu7y2VUxFOzY1QTs4ABo8ABEyAAYlPDw2AL68tLa2raiuri82PiolG4uMhFBFOz4zJbSyrTs2ODctLEAtJgAKJwAZOgAAElRTTvi17iuzvJOBAAAAAElFTkSuQmCC"
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40"></div>
+
+        {/* Improved overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/70 to-black/50" />
       </div>
 
       <Section dark>
@@ -29,7 +33,7 @@ export default function Hero() {
 
           <Container size="sm">
 
-            <p className="text-sm text-gray-300 mb-4">
+            <p className="text-sm text-gray-200 mb-4">
               Chartered Accountants • Established 1994 • Gurugram
             </p>
 
@@ -53,10 +57,11 @@ export default function Hero() {
                 target="_blank"
               >
                 <span className="flex items-center gap-2">
-                  <img
+                  <Image
                     src="/icons/whatsapp.svg"
                     alt="WhatsApp"
-                    className="w-4 h-4 shrink-0"
+                    width={16}
+                    height={16}
                   />
                   Schedule a Consultation
                 </span>
@@ -79,7 +84,7 @@ export default function Hero() {
 
             </div>
 
-            <div className="mt-8 flex justify-center gap-6 text-sm text-gray-300 flex-wrap">
+            <div className="mt-8 flex justify-center gap-6 text-sm text-gray-200 flex-wrap">
               <span>3+ Decades of Experience</span>
               <span>Pan India Services</span>
               <span>Corporate & SME Focus</span>
