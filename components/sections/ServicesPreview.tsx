@@ -8,36 +8,66 @@ export default function ServicesPreview() {
     <Section>
       <Container>
 
-        <h2 className="heading heading-accent text-2xl md:text-3xl text-gray-900 mb-14 text-center">
-          Core Services
+        <h2 className="heading heading-accent text-2xl md:text-3xl text-gray-900 text-center">
+          Our Core Services
         </h2>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          
-          <div className="p-6 border border-gray-300 rounded-lg transition transform hover:-translate-y-1 hover:shadow-lg hover:border-black">
+        <p className="mt-4 text-center text-gray-600 max-w-2xl mx-auto">
+          Comprehensive audit, taxation, and advisory solutions designed to ensure compliance,
+          optimize financial performance, and support business growth.
+        </p>
+
+        <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+          {/* 1 */}
+          <div className="p-6 border border-gray-300 rounded-lg bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg hover:border-black">
             <h3 className="font-semibold text-lg text-gray-900">
               Audit & Assurance
             </h3>
+            <p className="text-xs font-medium text-gray-500 mt-2 uppercase tracking-wide">
+              Statutory • Internal • Financial Reviews
+            </p>
             <p className="text-sm text-gray-600 mt-3 leading-relaxed">
-              Statutory and internal audits ensuring compliance accuracy and financial transparency.
+              Ensuring compliance, accuracy, and transparency in financial reporting for businesses of all sizes.
             </p>
           </div>
 
-          <div className="p-6 border border-gray-300 rounded-lg transition transform hover:-translate-y-1 hover:shadow-lg hover:border-black">
+          {/* 2 */}
+          <div className="p-6 border border-gray-300 rounded-lg bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg hover:border-black">
             <h3 className="font-semibold text-lg text-gray-900">
-              Taxation (Direct & GST)
+              Income Tax & GST
             </h3>
+            <p className="text-xs font-medium text-gray-500 mt-2 uppercase tracking-wide">
+              Planning • Filing • Compliance
+            </p>
             <p className="text-sm text-gray-600 mt-3 leading-relaxed">
-              Tax planning, filings and GST compliance tailored for corporates and SMEs.
+              End-to-end tax planning, return filing, and GST compliance to minimize tax exposure and ensure regulatory adherence.
             </p>
           </div>
 
-          <div className="p-6 border border-gray-300 rounded-lg transition transform hover:-translate-y-1 hover:shadow-lg hover:border-black">
+          {/* 3 */}
+          <div className="p-6 border border-gray-300 rounded-lg bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg hover:border-black">
             <h3 className="font-semibold text-lg text-gray-900">
-              Advisory
+              Business Advisory & Structuring
             </h3>
+            <p className="text-xs font-medium text-gray-500 mt-2 uppercase tracking-wide">
+              Structuring • Compliance • Strategy
+            </p>
             <p className="text-sm text-gray-600 mt-3 leading-relaxed">
-              Business structuring and regulatory advisory for growing enterprises.
+              Supporting businesses with structuring, regulatory compliance, and financial decision-making for scalable growth.
+            </p>
+          </div>
+
+          {/* 4 */}
+          <div className="p-6 border border-gray-300 rounded-lg bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg hover:border-black">
+            <h3 className="font-semibold text-lg text-gray-900">
+              Outsourced Accounting & Bookkeeping
+            </h3>
+            <p className="text-xs font-medium text-gray-500 mt-2 uppercase tracking-wide">
+              Accounting • Reporting • Bookkeeping
+            </p>
+            <p className="text-sm text-gray-600 mt-3 leading-relaxed">
+              Maintaining accurate financial records, improving reporting, and enabling informed business decisions.
             </p>
           </div>
 
@@ -45,10 +75,12 @@ export default function ServicesPreview() {
 
         <div className="mt-14 text-center">
           <Button
-            href={getWhatsAppLink()}
+            href={getWhatsAppLink(
+              "Hi, I would like to discuss your audit, taxation, or accounting services."
+            )}
             target="_blank"
           >
-            Speak with Our Team
+            Talk to a Chartered Accountant
           </Button>
         </div>
 

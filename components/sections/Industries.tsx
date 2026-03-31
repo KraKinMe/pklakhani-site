@@ -14,22 +14,32 @@ const industries = [
 export default function Industries() {
   return (
     <Section>
-      <div className="bg-gray-50 -my-24 py-24">
+      <div className="bg-gray-50 -my-24 py-24 text-center">
         <Container>
 
-          <h2 className="heading heading-accent text-2xl md:text-3xl text-center text-gray-900 mb-12">
+          <h2 className="heading heading-accent text-2xl md:text-3xl text-gray-900">
             Industries We Serve
           </h2>
 
-          <div className="flex flex-wrap justify-center gap-4">
+          <p className="mt-4 text-gray-600 max-w-2xl mx-auto text-sm md:text-base">
+            We work with businesses across diverse sectors, providing tailored audit,
+            taxation, and advisory solutions aligned with industry-specific requirements.
+          </p>
+
+          <div className="mt-10 flex flex-wrap justify-center gap-4">
+
             {industries.map((item) => (
               <span
                 key={item}
-                className="text-sm px-4 py-2 border border-gray-400 text-gray-800 rounded-full transition hover:border-black"
+                className="px-5 py-2.5 text-sm font-medium text-gray-800 
+                border border-gray-300 rounded-full 
+                bg-white shadow-sm 
+                transition hover:border-black hover:shadow-md"
               >
                 {item}
               </span>
             ))}
+
           </div>
 
         </Container>

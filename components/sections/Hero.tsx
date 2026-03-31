@@ -19,7 +19,7 @@ export default function Hero() {
 
       <Section dark>
         <div className="relative z-10 text-center text-white">
-          
+
           <Container size="sm">
 
             <p className="text-sm text-gray-300 mb-4">
@@ -34,14 +34,17 @@ export default function Hero() {
             </h1>
 
             <p className="mt-6 text-lg text-gray-200 max-w-2xl mx-auto">
-              Enabling corporates and SMEs with expert statutory audit, taxation, 
+              Enabling corporates and SMEs with expert statutory audit, taxation,
               and regulatory compliance services.
             </p>
 
             <div className="mt-8 flex justify-center gap-4 flex-wrap">
 
+              {/* WhatsApp CTA */}
               <Button
-                href={getWhatsAppLink()}
+                href={getWhatsAppLink(
+                  "Hi, I want to schedule a consultation regarding audit/tax services."
+                )}
                 target="_blank"
               >
                 <span className="flex items-center gap-2">
@@ -54,11 +57,15 @@ export default function Hero() {
                 </span>
               </Button>
 
+              {/* Secondary Actions */}
               <Button href="tel:+91981115617" variant="secondary-dark">
                 Call
               </Button>
 
-              <Button href="mailto:pradeep.lakhani@gmail.com" variant="secondary-dark">
+              <Button
+                href="mailto:pradeep.lakhani@gmail.com"
+                variant="secondary-dark"
+              >
                 Email
               </Button>
 

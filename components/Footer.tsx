@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Container from "@/components/ui/Container";
-import { get } from "http";
 import { getWhatsAppLink } from "@/utils/whatsapp";
 
 export default function Footer() {
@@ -17,8 +16,8 @@ export default function Footer() {
             </h3>
 
             <p className="text-sm text-gray-300 mt-4 leading-relaxed">
-              Chartered Accountants based in Gurugram providing audit, taxation,
-              GST and advisory services to corporates and growing enterprises.
+              Chartered Accountants based in Gurugram assisting SMEs and corporates 
+              in audit, taxation, and regulatory compliances.
             </p>
 
             <p className="text-sm text-gray-400 mt-4">
@@ -51,7 +50,11 @@ export default function Footer() {
             </h4>
 
             <div className="text-sm text-gray-400 space-y-3">
-              <p>Gurugram, India</p>
+              
+              <p>
+                302, JMD Galleria, Sohna Road, <br />
+                Sector 48, Gurugram, Haryana, India
+              </p>
 
               <a href="tel:+91981115617" className="block hover:text-white">
                 +91 98111 15617
@@ -63,10 +66,13 @@ export default function Footer() {
               >
                 pradeep.lakhani@gmail.com
               </a>
+
             </div>
 
             <a
-              href={getWhatsAppLink()}
+              href={getWhatsAppLink(
+                "Hi, I would like to connect regarding audit, taxation, or compliance services."
+              )}
               target="_blank"
               className="inline-block mt-5 bg-green-600 text-white text-sm px-5 py-2.5 rounded-md hover:bg-green-700 transition"
             >

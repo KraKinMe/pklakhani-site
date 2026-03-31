@@ -11,24 +11,29 @@ export default function CTA() {
         <div className="text-center max-w-2xl mx-auto">
 
           <h2 className="heading heading-accent text-3xl md:text-4xl">
-            Need Assistance with Audit or Compliance?
+            Need Assistance?
           </h2>
 
           <p className="mt-4 text-gray-300 leading-relaxed">
-            Connect with our team to discuss your requirements.
+            Connect with our team to discuss your requirements and get expert guidance.
           </p>
 
           <div className="mt-8 flex justify-center items-center gap-4 flex-wrap">
 
-            <Button href={getWhatsAppLink()} target="_blank">
-              WhatsApp
+            <Button
+              href={getWhatsAppLink(
+                "Hi, I need assistance with audit, tax, or compliance services."
+              )}
+              target="_blank"
+            >
+              Talk to a Chartered Accountant
             </Button>
 
             <Button
               href="tel:+91981115617"
               variant="secondary-dark"
             >
-              Call
+              Call Now
             </Button>
 
           </div>
