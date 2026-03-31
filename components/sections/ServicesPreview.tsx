@@ -8,19 +8,25 @@ export default function ServicesPreview() {
     <Section>
       <Container>
 
-        <h2 className="heading heading-accent text-2xl md:text-3xl text-gray-900 text-center">
-          Our Core Services
-        </h2>
+        {/* Center wrapper */}
+        <div className="text-center max-w-4xl mx-auto">
 
-        <p className="mt-4 text-center text-gray-600 max-w-2xl mx-auto">
-          Comprehensive audit, taxation, and advisory solutions designed to ensure compliance,
-          optimize financial performance, and support business growth.
-        </p>
+          <h2 className="heading heading-accent text-2xl md:text-3xl text-gray-900">
+            Our Core Services
+          </h2>
 
-        <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
+            Comprehensive audit, taxation, and advisory solutions designed to ensure compliance,
+            optimize financial performance, and support business growth.
+          </p>
+
+        </div>
+
+        {/* Cards */}
+        <div className="mt-12 max-w-6xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
           {/* 1 */}
-          <div className="p-6 border border-gray-300 rounded-lg bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg hover:border-black">
+          <div className="p-6 border border-gray-300 rounded-lg bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg hover:border-black text-center">
             <h3 className="font-semibold text-lg text-gray-900">
               Audit & Assurance
             </h3>
@@ -33,7 +39,7 @@ export default function ServicesPreview() {
           </div>
 
           {/* 2 */}
-          <div className="p-6 border border-gray-300 rounded-lg bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg hover:border-black">
+          <div className="p-6 border border-gray-300 rounded-lg bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg hover:border-black text-center">
             <h3 className="font-semibold text-lg text-gray-900">
               Income Tax & GST
             </h3>
@@ -46,7 +52,7 @@ export default function ServicesPreview() {
           </div>
 
           {/* 3 */}
-          <div className="p-6 border border-gray-300 rounded-lg bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg hover:border-black">
+          <div className="p-6 border border-gray-300 rounded-lg bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg hover:border-black text-center">
             <h3 className="font-semibold text-lg text-gray-900">
               Business Advisory & Structuring
             </h3>
@@ -59,7 +65,7 @@ export default function ServicesPreview() {
           </div>
 
           {/* 4 */}
-          <div className="p-6 border border-gray-300 rounded-lg bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg hover:border-black">
+          <div className="p-6 border border-gray-300 rounded-lg bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg hover:border-black text-center">
             <h3 className="font-semibold text-lg text-gray-900">
               Outsourced Accounting & Bookkeeping
             </h3>
@@ -73,6 +79,7 @@ export default function ServicesPreview() {
 
         </div>
 
+        {/* CTA */}
         <div className="mt-14 text-center">
           <Button
             href={getWhatsAppLink(
