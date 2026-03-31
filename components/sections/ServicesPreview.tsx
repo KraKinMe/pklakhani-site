@@ -9,8 +9,8 @@ export default function ServicesPreview() {
       <Container>
 
         {/* Heading */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <h2 className="heading heading-accent text-2xl md:text-3xl text-gray-900">
+        <div className="max-w-3xl mx-auto text-center mb-12">
+          <h2 className="heading heading-accent text-2xl md:text-3xl text-gray-900 !text-center">
             Our Core Services
           </h2>
 
