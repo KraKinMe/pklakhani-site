@@ -46,14 +46,14 @@ export default function ServicesPreview() {
           </div>
 
           {/* CTA */}
-          <div className="mt-16">
+          {/* <div className="mt-16">
             <Button
               href={getWhatsAppLink(MESSAGES.general)}
               target="_blank"
             >
               Talk to a Chartered Accountant
             </Button>
-          </div>
+          </div> */}
 
         </Container>
       </div>
