@@ -10,7 +10,7 @@ export const SITE = {
   },
 
   contact: {
-    phone: "+919811115617",
+    phone: "+91 9811115617",
     email: "pradeep.lakhani@gmail.com",
     whatsapp: "918802805667",
   },
@@ -21,5 +21,13 @@ export const SITE = {
 
   links: {
     whatsappBase: "https://wa.me/",
+  },
+
+  footer: {
+    description:
+      "Chartered Accountants based in Gurugram assisting SMEs and corporates in audit, taxation, and regulatory compliances.",
+    established: "Established in 1994",
+    bottomText:
+      "Registered Chartered Accountants — Institute of Chartered Accountants of India",
   },
 };

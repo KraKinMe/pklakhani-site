@@ -1,13 +1,17 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import "./global.css";
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import WhatsAppButton from "@/components/WhatsAppButton";
+import WhatsAppCTA from "@/components/common/WhatsAppCTA";
 
 import { SITE } from "@/config/site";
+import { CTA } from "@/config/cta";
 
+/* =========================
+   Fonts
+========================= */
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -18,6 +22,9 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+/* =========================
+   Metadata (SEO)
+========================= */
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.baseUrl),
 
@@ -45,6 +52,14 @@ export const metadata: Metadata = {
     siteName: SITE.name,
     locale: "en_IN",
     type: "website",
+    images: [
+      {
+        url: `${SITE.baseUrl}/images/hero_ca.png`,
+        width: 1200,
+        height: 630,
+        alt: SITE.name,
+      },
+    ],
   },
 
   twitter: {
@@ -52,51 +67,67 @@ export const metadata: Metadata = {
     title: SITE.name,
     description:
       "Audit, taxation and advisory services for corporates and SMEs.",
+    images: [`${SITE.baseUrl}/images/hero_ca.png`],
+  },
+
+  alternates: {
+    canonical: SITE.baseUrl,
   },
 };
 
+/* =========================
+   Layout
+========================= */
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "AccountingService",
+    name: SITE.name,
+    url: SITE.baseUrl,
+    telephone: SITE.contact.phone,
+    email: SITE.contact.email,
+    foundingDate: "1994",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: SITE.address.line,
+      addressLocality: "Gurugram",
+      addressRegion: "Haryana",
+      addressCountry: "IN",
+    },
+    areaServed: "India",
+    memberOf: {
+      "@type": "Organization",
+      name: "Institute of Chartered Accountants of India",
+    },
+  };
+
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {/* Structured Data (SEO) */}
+        {/* SEO Structured Data */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "AccountingService",
-              name: SITE.name,
-              url: SITE.baseUrl,
-              telephone: SITE.contact.phone,
-              email: SITE.contact.email,
-              foundingDate: "1994",
-              address: {
-                "@type": "PostalAddress",
-                streetAddress: SITE.address.line,
-                addressLocality: "Gurugram",
-                addressRegion: "Haryana",
-                addressCountry: "IN",
-              },
-              areaServed: "India",
-              memberOf: {
-                "@type": "Organization",
-                name: "Institute of Chartered Accountants of India",
-              },
-            }),
+            __html: JSON.stringify(structuredData),
           }}
         />
 
         <Navbar />
         {children}
         <Footer />
-        <WhatsAppButton />
+
+        {/* Floating WhatsApp CTA */}
+        <WhatsAppCTA 
+          {...CTA.general} 
+          label="Chat with Us"
+          variant="floating" 
+        />
       </body>
     </html>
   );

@@ -1,6 +1,9 @@
 import Section from "@/components/ui/Section";
 import Container from "@/components/ui/Container";
+import PageHero from "@/components/common/PageHero";
+
 import { generateMeta } from "@/config/meta";
+import { PAGE_HERO } from "@/config/content";
 
 export const metadata = generateMeta("about");
 
@@ -8,20 +11,8 @@ export default function AboutPage() {
   return (
     <main>
 
-      {/* HERO */}
-      <Section dark>
-        <div className="text-center">
-          <Container size="sm">
-            <h1 className="heading heading-accent text-3xl md:text-4xl">
-              About Us
-            </h1>
-            <p className="mt-4 text-gray-300 max-w-2xl mx-auto">
-              Established in 1994, P.K. Lakhani & Co. is a Chartered Accountants firm
-              based in Gurugram, serving corporates and SMEs across India.
-            </p>
-          </Container>
-        </div>
-      </Section>
+      {/* HERO (reusable) */}
+      <PageHero {...PAGE_HERO.about} />
 
       {/* FIRM */}
       <Section>

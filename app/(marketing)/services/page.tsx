@@ -1,11 +1,14 @@
 import Section from "@/components/ui/Section";
 import Container from "@/components/ui/Container";
-import Button from "@/components/ui/Button";
-import { getWhatsAppLink } from "@/utils/whatsapp";
-import { SERVICES } from "@/config/content";
-import { MESSAGES } from "@/config/messages";
-import { SITE } from "@/config/site";
+
+import PageHero from "@/components/common/PageHero";
+import CTAButton from "@/components/common/CTAButton";
+import WhatsAppCTA from "@/components/common/WhatsAppCTA";
+
 import { generateMeta } from "@/config/meta";
+import { PAGE_HERO, SERVICES } from "@/config/content";
+import { CTA } from "@/config/cta";
+import { SITE } from "@/config/site";
 
 export const metadata = generateMeta("services");
 
@@ -14,28 +17,21 @@ export default function ServicesPage() {
     <main>
 
       {/* HERO */}
-      <Section dark>
-        <div className="text-center">
-          <Container size="sm">
-            <h1 className="heading heading-accent text-3xl md:text-4xl">
-              Our Services
-            </h1>
-
-            <p className="mt-4 text-gray-300 max-w-2xl mx-auto">
-              Comprehensive audit, taxation, and advisory services designed to ensure
-              compliance, reduce risk, and support business growth.
-            </p>
-          </Container>
-        </div>
-      </Section>
+      <PageHero {...PAGE_HERO.services} />
 
       {/* SERVICES */}
-      {SERVICES.map((service, index) => {
+      {SERVICES.map((service) => {
         const isAlt = service.highlight;
 
         return (
           <Section key={service.title}>
-            <div className={isAlt ? "bg-gray-50 -my-24 py-24 text-center" : "text-center"}>
+            <div
+              className={
+                isAlt
+                  ? "bg-gray-50 -my-24 py-24 text-center"
+                  : "text-center"
+              }
+            >
               <Container size="sm">
 
                 <h2 className="heading heading-accent text-2xl md:text-3xl text-gray-900">
@@ -46,13 +42,13 @@ export default function ServicesPage() {
                   {service.description}
                 </p>
 
-                <div className="mt-8">
-                  <Button
-                    href={getWhatsAppLink(MESSAGES[service.messageKey])}
-                    target="_blank"
-                  >
-                    {service.ctaLabel}
-                  </Button>
+                {/* CTA (from config) */}
+                <div className="mt-8 flex justify-center gap-4 flex-wrap">
+                  <WhatsAppCTA
+                    message={service.cta.message}
+                    label={service.cta.label}
+                    className="px-6 py-2.5 text-sm rounded-md w-auto inline-flex"
+                  />
                 </div>
 
               </Container>
@@ -72,19 +68,18 @@ export default function ServicesPage() {
 
             <div className="mt-8 flex justify-center gap-4 flex-wrap">
 
-              <Button
-                href={getWhatsAppLink(MESSAGES.general)}
-                target="_blank"
-              >
-                WhatsApp
-              </Button>
+              <CTAButton
+                type="whatsapp"
+                label={CTA.general.label}
+                message={CTA.general.message}
+              />
 
-              <Button
+              <a
                 href={`tel:${SITE.contact.phone}`}
-                variant="secondary-dark"
+                className="px-6 py-2.5 rounded-md border border-white/30 text-white text-sm font-medium hover:bg-white/10 transition inline-flex items-center justify-center"
               >
-                Call
-              </Button>
+                Call Now
+              </a>
 
             </div>
 

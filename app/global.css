@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+/* ================================
+   BASE LAYER (FOUNDATION)
+================================ */
+@layer base {
+  :root {
+    --color-primary: #0B1F3A;
+    --color-accent: #C9A14A;
+    --color-text: #111827;
+    --color-muted: #6B7280;
+    --color-border: #D1D5DB;
+  }
+
+  html {
+    color-scheme: light;
+  }
+
+  body {
+    color: var(--color-text);
+    background: white;
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: white;
+  }
+}
+
+/* ================================
+   COMPONENTS (REUSABLE UI)
+================================ */
+@layer components {
+
+  /* Typography */
+  .heading {
+    @apply font-semibold tracking-tight;
+  }
+
+  .subtext {
+    @apply text-gray-600 leading-relaxed;
+  }
+
+  /* Buttons */
+  .btn {
+    @apply px-6 py-3 rounded-md text-sm transition flex items-center justify-center;
+  }
+
+  .btn-primary {
+    @apply bg-green-600 text-white hover:bg-green-700;
+  }
+
+  .btn-secondary {
+    @apply border border-gray-400 text-gray-800 hover:border-black hover:text-black;
+  }
+
+  .btn-secondary-dark {
+    @apply border border-gray-500 text-gray-200 hover:border-white hover:text-white;
+  }
+
+  /* Layout */
+  .section {
+    @apply py-24;
+  }
+
+  .section-dark {
+    background: var(--color-primary);
+    color: white;
+  }
+
+  .container {
+    @apply max-w-6xl mx-auto px-6;
+  }
+
+  .container-sm {
+    @apply max-w-4xl mx-auto px-6;
+  }
+
+  /* Accent underline */
+  .heading-accent {
+    @apply relative block w-fit mx-auto;
+  }
+
+  .heading-accent::after {
+    content: "";
+    @apply block w-12 h-[2px] mt-2 mx-auto;
+    background: var(--color-accent);
+  }
+}

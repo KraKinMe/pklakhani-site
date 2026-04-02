@@ -1,9 +1,12 @@
 import Section from "@/components/ui/Section";
 import Container from "@/components/ui/Container";
-import Button from "@/components/ui/Button";
-import { getWhatsAppLink } from "@/utils/whatsapp";
-import { SERVICES } from "@/config/content";
-import { MESSAGES } from "@/config/messages";
+
+import WhatsAppCTA from "@/components/common/WhatsAppCTA";
+
+import {
+  SERVICES,
+  SERVICES_SECTION,
+} from "@/config/content";
 
 export default function ServicesPreview() {
   return (
@@ -13,12 +16,11 @@ export default function ServicesPreview() {
 
           {/* Heading */}
           <h2 className="heading heading-accent text-2xl md:text-3xl text-gray-900">
-            Our Core Services
+            {SERVICES_SECTION.title}
           </h2>
 
           <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
-            Comprehensive audit, taxation, and advisory solutions designed to ensure compliance,
-            optimize financial performance, and support business growth.
+            {SERVICES_SECTION.description}
           </p>
 
           {/* Cards */}
@@ -40,20 +42,19 @@ export default function ServicesPreview() {
                 <p className="text-sm text-gray-600 mt-3 leading-relaxed">
                   {service.description}
                 </p>
+
+                {/* CTA */}
+                {/* <div className="mt-4">
+                  <WhatsAppCTA
+                    message={service.cta.message}
+                    label={service.cta.label}
+                    className="text-sm px-4 py-2"
+                  />
+                </div> */}
               </div>
             ))}
 
           </div>
-
-          {/* CTA */}
-          {/* <div className="mt-16">
-            <Button
-              href={getWhatsAppLink(MESSAGES.general)}
-              target="_blank"
-            >
-              Talk to a Chartered Accountant
-            </Button>
-          </div> */}
 
         </Container>
       </div>

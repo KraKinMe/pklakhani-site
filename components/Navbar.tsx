@@ -3,100 +3,127 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { Menu, X } from "lucide-react";
+
 import Container from "@/components/ui/Container";
-import { getWhatsAppLink } from "@/utils/whatsapp";
+import CTAButton from "@/components/common/CTAButton";
+
 import { SITE } from "@/config/site";
-import { MESSAGES } from "@/config/messages";
+import { NAVIGATION } from "@/config/navigation";
+import { CTA } from "@/config/cta";
 
 export default function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
-  const navLinks = [
-    { href: "/", label: "Home" },
-    { href: "/about", label: "About" },
-    { href: "/services", label: "Services" },
-    { href: "/careers", label: "Careers" },
-    { href: "/contact", label: "Contact" },
-  ];
-
   return (
-    <nav className="bg-[#0B1F3A] text-white sticky top-0 z-50 border-b border-white/10">
+    <nav className="sticky top-0 z-50 bg-[#0B1F3A] border-b border-white/10">
       <Container>
-        <div className="h-16 flex items-center justify-between">
+        <div className="h-20 flex items-center justify-between">
 
-          {/* Brand */}
+          {/* BRAND */}
           <Link href="/" className="flex flex-col leading-tight">
-            <span className="font-semibold tracking-tight text-base">
+            <span className="font-semibold tracking-tight text-xl md:text-2xl lg:text-3xl">
               {SITE.brand.prefix}{" "}
               <span className="text-[#C9A14A]">
                 {SITE.brand.highlight}
               </span>{" "}
               {SITE.brand.suffix}
             </span>
-            <span className="text-xs text-gray-300">
+            <span className="text-xs text-gray-300 -mt-1">
               Chartered Accountants • Since 1994
             </span>
           </Link>
 
-          {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-8 text-sm">
-            {navLinks.map((link) => {
+          {/* DESKTOP NAV */}
+          <div className="hidden md:flex items-center gap-6 text-sm">
+            {NAVIGATION.map((link) => {
               const isActive = pathname === link.href;
 
               return (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`transition ${
+                  className={`relative pb-1 transition ${
                     isActive
                       ? "text-white"
                       : "text-gray-300 hover:text-white"
                   }`}
                 >
                   {link.label}
+
+                  <span
+                    className={`absolute left-0 bottom-0 h-[2px] bg-[#C9A14A] transition-all ${
+                      isActive ? "w-full" : "w-0"
+                    }`}
+                  />
                 </Link>
               );
             })}
           </div>
 
-          {/* Right CTA + Mobile Toggle */}
-          <div className="flex items-center gap-4">
+          {/* RIGHT SIDE */}
+          <div className="flex items-center gap-3">
 
-            {/* Call */}
-            <a
-              href={`tel:${SITE.contact.phone}`}
-              className="hidden sm:inline text-sm text-gray-300 hover:text-white"
-            >
-              Call
-            </a>
+            {/* Desktop CTA */}
+            <div className="hidden md:flex items-center gap-3">
 
-            {/* WhatsApp */}
-            <a
-              href={getWhatsAppLink(MESSAGES.general)}
-              target="_blank"
-              className="bg-green-600 text-white text-sm px-4 py-2 rounded-md"
-            >
-              WhatsApp
-            </a>
+              {/* Call */}
+              <CTAButton
+                type="call"
+                label="Call"
+                phone={SITE.contact.phone}
+                className="text-sm text-gray-300 hover:text-white"
+              />
 
-            {/* Mobile Menu Button */}
+              {/* WhatsApp */}
+              <CTAButton
+                type="whatsapp"
+                label="Chat"
+                message={CTA.general.message}
+                className="bg-green-600 text-white px-4 py-2 rounded-md text-sm hover:bg-green-700 transition"
+              />
+
+            </div>
+
+            {/* Hamburger */}
             <button
-              className="md:hidden text-white text-xl"
               onClick={() => setOpen(!open)}
+              className="md:hidden p-2 rounded-md hover:bg-white/10 transition"
             >
-              ☰
+              {open ? <X size={28} /> : <Menu size={28} />}
             </button>
+
           </div>
         </div>
       </Container>
 
-      {/* Mobile Menu */}
+      {/* OVERLAY */}
       {open && (
-        <div className="md:hidden bg-[#0B1F3A] border-t border-white/10">
-          <div className="px-6 py-4 space-y-4 text-sm">
+        <div
+          className="fixed inset-0 bg-black/40 z-40 md:hidden"
+          onClick={() => setOpen(false)}
+        />
+      )}
 
-            {navLinks.map((link) => (
+      {/* MOBILE MENU */}
+      <div
+        className={`fixed top-0 right-0 h-full w-[80%] max-w-sm bg-[#0B1F3A] z-50 transform transition-transform duration-300 md:hidden ${
+          open ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
+        <div className="p-6 space-y-8">
+
+          {/* Close */}
+          <div className="flex justify-end">
+            <button onClick={() => setOpen(false)}>
+              <X size={26} />
+            </button>
+          </div>
+
+          {/* Links */}
+          <div className="space-y-5 text-base">
+            {NAVIGATION.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -106,29 +133,36 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
+          </div>
 
-            {/* Divider */}
-            <div className="border-t border-white/10 pt-4 space-y-3">
+          {/* CTA */}
+          <div className="border-t border-white/10 pt-6 space-y-4">
 
-              <a
-                href={`tel:${SITE.contact.phone}`}
-                className="block text-gray-300"
-              >
-                Call
-              </a>
+            <CTAButton
+              type="call"
+              label="Call"
+              phone={SITE.contact.phone}
+              className="block text-white font-medium"
+            />
 
-              <a
-                href={`mailto:${SITE.contact.email}`}
-                className="block text-gray-300"
-              >
-                Email
-              </a>
+            <CTAButton
+              type="email"
+              label="Email"
+              email={SITE.contact.email}
+              className="block text-white font-medium"
+            />
 
-            </div>
+            <CTAButton
+              type="whatsapp"
+              label="Chat"
+              message={CTA.general.message}
+              className="block bg-green-600 text-white px-4 py-2 rounded-md text-center"
+            />
 
           </div>
+
         </div>
-      )}
+      </div>
     </nav>
   );
 }

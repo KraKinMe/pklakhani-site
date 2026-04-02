@@ -1,10 +1,13 @@
 import Section from "@/components/ui/Section";
 import Container from "@/components/ui/Container";
-import Button from "@/components/ui/Button";
-import { SITE } from "@/config/site";
-import { MESSAGES } from "@/config/messages";
-import { getWhatsAppLink } from "@/utils/whatsapp";
+
+import PageHero from "@/components/common/PageHero";
+import CTAButton from "@/components/common/CTAButton";
+
 import { generateMeta } from "@/config/meta";
+import { PAGE_HERO } from "@/config/content";
+import { SITE } from "@/config/site";
+import { CTA } from "@/config/cta";
 
 export const metadata = generateMeta("contact");
 
@@ -12,17 +15,13 @@ export default function ContactPage() {
   return (
     <main>
 
-      <Section dark>
-        <Container size="sm">
-          <h1 className="heading heading-accent text-3xl text-center">
-            Contact Us
-          </h1>
-          <p className="mt-4 text-gray-300 text-center">
-            Reach out for audit, taxation and advisory services.
-          </p>
-        </Container>
-      </Section>
+      {/* HERO (Reusable) */}
+      <PageHero 
+        {...PAGE_HERO.contact} 
+        position="top"
+      />
 
+      {/* CONTACT INFO */}
       <Section>
         <Container size="sm">
 
@@ -37,42 +36,43 @@ export default function ContactPage() {
 
             <div>
               <h3 className="font-semibold">Phone</h3>
-              <a
-                href={`tel:${SITE.contact.phone}`}
-                className="text-sm text-gray-600"
-              >
-                {SITE.contact.phone}
-              </a>
+              <CTAButton
+                type="call"
+                label={SITE.contact.phone}
+                phone={SITE.contact.phone}
+              />
             </div>
 
             <div>
               <h3 className="font-semibold">Email</h3>
-              <a
-                href={`mailto:${SITE.contact.email}`}
-                className="text-sm text-gray-600"
-              >
-                {SITE.contact.email}
-              </a>
+              <CTAButton
+                type="email"
+                label={SITE.contact.email}
+                email={SITE.contact.email}
+              />
             </div>
 
           </div>
 
+          {/* ACTIONS */}
           <div className="mt-8 flex gap-4 flex-wrap">
-            <Button
-              href={getWhatsAppLink(MESSAGES.general)}
-              target="_blank"
-            >
-              WhatsApp
-            </Button>
 
-            <Button
-              href={`tel:${SITE.contact.phone}`}
-              variant="secondary"
-            >
-              Call
-            </Button>
+            <CTAButton
+              type="whatsapp"
+              label="WhatsApp"
+              message={CTA.general.message}
+            />
+
+            <a
+                href={`tel:${SITE.contact.phone}`}
+                className="px-6 py-2.5 rounded-md border border-white/30 text-white text-sm font-medium hover:bg-white/10 transition inline-flex items-center justify-center"
+              >
+                Call Now
+              </a>
+
           </div>
 
+          {/* MAP */}
           <iframe
             src={`https://www.google.com/maps?q=${encodeURIComponent(
               SITE.address.line

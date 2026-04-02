@@ -1,11 +1,12 @@
 import Section from "@/components/ui/Section";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
-import { getWhatsAppLink } from "@/utils/whatsapp";
-import { MESSAGES } from "@/config/messages";
+
+import WhatsAppCTA from "@/components/common/WhatsAppCTA";
+import { CTA } from "@/config/cta";
 import { SITE } from "@/config/site";
 
-export default function CTA() {
+export default function CTASection() {
   return (
     <Section dark>
       <Container size="sm">
@@ -21,13 +22,13 @@ export default function CTA() {
 
           <div className="mt-8 flex justify-center items-center gap-4 flex-wrap">
 
-            <Button
-              href={getWhatsAppLink(MESSAGES.general)}
-              target="_blank"
-            >
-              Talk to a Chartered Accountant
-            </Button>
+            {/* WhatsApp CTA */}
+            <WhatsAppCTA
+              {...CTA.general}
+              label="Talk to a Chartered Accountant"
+            />
 
+            {/* Call CTA */}
             <Button
               href={`tel:${SITE.contact.phone}`}
               variant="secondary-dark"
