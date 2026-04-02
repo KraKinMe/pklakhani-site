@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 
 import Container from "@/components/ui/Container";
@@ -15,6 +15,25 @@ import { CTA } from "@/config/cta";
 export default function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+
+  // ✅ SCROLL LOCK + NO LAYOUT SHIFT
+  useEffect(() => {
+    if (open) {
+      const scrollBarWidth =
+        window.innerWidth - document.documentElement.clientWidth;
+
+      document.body.style.overflow = "hidden";
+      document.body.style.paddingRight = `${scrollBarWidth}px`;
+    } else {
+      document.body.style.overflow = "auto";
+      document.body.style.paddingRight = "0px";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+      document.body.style.paddingRight = "0px";
+    };
+  }, [open]);
 
   return (
     <>
