@@ -23,7 +23,7 @@ export default function Navbar() {
 
           {/* BRAND */}
           <Link href="/" className="flex flex-col leading-tight">
-            <span className="font-semibold tracking-tight text-xl md:text-2xl lg:text-3xl">
+            <span className="font-semibold tracking-tight text-xl md:text-2xl lg:text-3xl text-white">
               {SITE.brand.prefix}{" "}
               <span className="text-[#C9A14A]">
                 {SITE.brand.highlight}
