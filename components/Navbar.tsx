@@ -17,98 +17,96 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="sticky top-0 z-50 bg-[#0B1F3A] border-b border-white/10">
-      <Container>
-        <div className="h-20 flex items-center justify-between">
+    <>
+      <nav className="sticky top-0 z-50 bg-[#0B1F3A] border-b border-white/10">
+        <Container>
+          <div className="h-20 flex items-center justify-between">
 
-          {/* BRAND */}
-          <Link href="/" className="flex flex-col leading-tight">
-            <span className="font-semibold tracking-tight text-xl md:text-2xl lg:text-3xl text-white">
-              {SITE.brand.prefix}{" "}
-              <span className="text-[#C9A14A]">
-                {SITE.brand.highlight}
-              </span>{" "}
-              {SITE.brand.suffix}
-            </span>
-            <span className="text-xs text-gray-300 -mt-1">
-              Chartered Accountants • Since 1994
-            </span>
-          </Link>
+            {/* BRAND */}
+            <Link href="/" className="flex flex-col leading-tight">
+              <span className="font-semibold tracking-tight text-xl md:text-2xl lg:text-3xl text-white">
+                {SITE.brand.prefix}{" "}
+                <span className="text-[#C9A14A]">
+                  {SITE.brand.highlight}
+                </span>{" "}
+                {SITE.brand.suffix}
+              </span>
+              <span className="text-xs text-gray-300 -mt-1">
+                Chartered Accountants • Since 1994
+              </span>
+            </Link>
 
-          {/* DESKTOP NAV */}
-          <div className="hidden md:flex items-center gap-6 text-sm">
-            {NAVIGATION.map((link) => {
-              const isActive = pathname === link.href;
+            {/* DESKTOP NAV */}
+            <div className="hidden md:flex items-center gap-6 text-sm">
+              {NAVIGATION.map((link) => {
+                const isActive = pathname === link.href;
 
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`relative pb-1 transition ${
-                    isActive
-                      ? "text-white"
-                      : "text-gray-300 hover:text-white"
-                  }`}
-                >
-                  {link.label}
-
-                  <span
-                    className={`absolute left-0 bottom-0 h-[2px] bg-[#C9A14A] transition-all ${
-                      isActive ? "w-full" : "w-0"
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className={`relative pb-1 transition ${
+                      isActive
+                        ? "text-white"
+                        : "text-gray-300 hover:text-white"
                     }`}
-                  />
-                </Link>
-              );
-            })}
-          </div>
+                  >
+                    {link.label}
 
-          {/* RIGHT SIDE */}
-          <div className="flex items-center gap-3">
-
-            {/* Desktop CTA */}
-            <div className="hidden md:flex items-center gap-3">
-
-              {/* Call */}
-              <CTAButton
-                type="call"
-                label="Call"
-                phone={SITE.contact.phone}
-                className="text-sm text-gray-300 hover:text-white"
-              />
-
-              {/* WhatsApp */}
-              <CTAButton
-                type="whatsapp"
-                label="Chat"
-                message={CTA.general.message}
-                className="bg-green-600 text-white px-4 py-2 rounded-md text-sm hover:bg-green-700 transition"
-              />
-
+                    <span
+                      className={`absolute left-0 bottom-0 h-[2px] bg-[#C9A14A] transition-all ${
+                        isActive ? "w-full" : "w-0"
+                      }`}
+                    />
+                  </Link>
+                );
+              })}
             </div>
 
-            {/* Hamburger */}
-            <button
-              onClick={() => setOpen(!open)}
-              className="md:hidden p-2 rounded-md hover:bg-white/10 transition"
-            >
-              {open ? <X size={28} /> : <Menu size={28} />}
-            </button>
+            {/* RIGHT SIDE */}
+            <div className="flex items-center gap-3">
 
+              {/* Desktop CTA */}
+              <div className="hidden md:flex items-center gap-3">
+                <CTAButton
+                  type="call"
+                  label="Call"
+                  phone={SITE.contact.phone}
+                  className="text-sm text-gray-300 hover:text-white"
+                />
+
+                <CTAButton
+                  type="whatsapp"
+                  label="Chat"
+                  message={CTA.general.message}
+                  className="bg-green-600 text-white px-4 py-2 rounded-md text-sm hover:bg-green-700 transition"
+                />
+              </div>
+
+              {/* Hamburger */}
+              <button
+                onClick={() => setOpen(!open)}
+                className="md:hidden p-2 rounded-md hover:bg-white/10 transition text-white"
+              >
+                {open ? <X size={28} /> : <Menu size={28} />}
+              </button>
+
+            </div>
           </div>
-        </div>
-      </Container>
+        </Container>
+      </nav>
 
       {/* OVERLAY */}
       {open && (
         <div
-          className="fixed inset-0 bg-black/40 z-40 md:hidden"
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 md:hidden"
           onClick={() => setOpen(false)}
         />
       )}
 
       {/* MOBILE MENU */}
       <div
-        className={`fixed top-0 right-0 h-full w-[80%] max-w-sm bg-[#0B1F3A] z-50 transform transition-transform duration-300 md:hidden ${
+        className={`fixed top-0 right-0 h-full w-[80%] max-w-sm bg-[#0B1F3A] shadow-2xl border-l border-white/10 z-50 transform transition-transform duration-300 md:hidden ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -116,7 +114,10 @@ export default function Navbar() {
 
           {/* Close */}
           <div className="flex justify-end">
-            <button onClick={() => setOpen(false)}>
+            <button
+              onClick={() => setOpen(false)}
+              className="text-white p-2 rounded-md hover:bg-white/10 transition"
+            >
               <X size={26} />
             </button>
           </div>
@@ -128,7 +129,7 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="block text-gray-300 hover:text-white"
+                className="block text-gray-300 hover:text-white transition"
               >
                 {link.label}
               </Link>
@@ -156,13 +157,13 @@ export default function Navbar() {
               type="whatsapp"
               label="Chat"
               message={CTA.general.message}
-              className="block bg-green-600 text-white px-4 py-2 rounded-md text-center"
+              className="block bg-green-600 text-white px-4 py-2 rounded-md text-center hover:bg-green-700 transition"
             />
 
           </div>
 
         </div>
       </div>
-    </nav>
+    </>
   );
 }
