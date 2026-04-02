@@ -80,7 +80,7 @@ export const SERVICES = [
     cta: {
       label: "Discuss Accounting & Payroll Needs",
       message:
-        "Hi, I would like to discuss Accounting and Bookkeeping services.",
+        "Hi, I would like to discuss Accounting and Payroll services.",
     },
   },
 ];
