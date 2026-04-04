@@ -141,10 +141,21 @@ export const SERVICES = [
 
 // ✅ NEW (HIGH IMPACT)
 export const STATS = [
-  { value: "30+", label: "Years Experience" },
-  { value: "500+", label: "Clients Served" },
-  { value: "100%", label: "Compliance Focus" },
-  { value: "Pan India", label: "Service Coverage" },
+  {
+    value: "30+",
+    label: "Years Experience",
+    icon: "clock",
+  },
+  {
+    value: "100%",
+    label: "Compliance Focus",
+    icon: "check",
+  },
+  {
+    value: "Pan India",
+    label: "Service Coverage",
+    icon: "india",
+  },
 ];
 
 export const PAGE_HERO = {

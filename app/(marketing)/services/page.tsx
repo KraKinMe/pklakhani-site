@@ -6,7 +6,7 @@ import CTAButton from "@/components/common/CTAButton";
 import WhatsAppCTA from "@/components/common/WhatsAppCTA";
 
 import { generateMeta } from "@/config/meta";
-import { PAGE_HERO, SERVICES } from "@/config/content";
+import { PAGE_HERO, SERVICES, STATS } from "@/config/content";
 import { CTA } from "@/config/cta";
 import { SITE } from "@/config/site";
 
@@ -15,19 +15,29 @@ import {
   Calculator,
   LineChart,
   Users,
+  Clock,
+  CheckCircle,
+  Map,
 } from "lucide-react";
 
 export const metadata = generateMeta("services");
 
-// ✅ TOGGLE HERE
+// ✅ toggle alternation
 const ENABLE_ALTERNATE = false;
 
-// map icons
+// service icons
 const ICON_MAP: Record<string, any> = {
   audit: ShieldCheck,
   tax: Calculator,
   advisory: LineChart,
   payroll: Users,
+};
+
+// stats icons
+const STAT_ICON_MAP: Record<string, any> = {
+  clock: Clock,
+  check: CheckCircle,
+  india: Map,
 };
 
 export default function ServicesPage() {
@@ -40,8 +50,6 @@ export default function ServicesPage() {
       {/* SERVICES */}
       {SERVICES.map((service, index) => {
         const Icon = ICON_MAP[service.icon];
-
-        // ✅ Controlled alternation
         const reverse = ENABLE_ALTERNATE && index % 2 !== 0;
 
         return (
@@ -51,9 +59,9 @@ export default function ServicesPage() {
               <div className="grid md:grid-cols-2 gap-16 md:gap-20 items-center">
 
                 {/* TEXT */}
-                <div className={reverse ? "md:order-2" : ""}>
+                <div className={`${reverse ? "md:order-2" : ""} w-full text-left`}>
 
-                  <h2 className="heading heading-accent text-3xl md:text-4xl lg:text-5xl text-gray-900">
+                  <h2 className="service-heading text-3xl md:text-4xl lg:text-5xl text-gray-900">
                     {service.title}
                   </h2>
 
@@ -61,14 +69,12 @@ export default function ServicesPage() {
                     {service.description}
                   </p>
 
-                  {/* BULLETS */}
                   <ul className="mt-6 space-y-3 text-gray-700 text-lg md:text-xl">
                     {service.bullets.map((item) => (
                       <li key={item}>• {item}</li>
                     ))}
                   </ul>
 
-                  {/* CTA */}
                   <div className="mt-8">
                     <WhatsAppCTA
                       message={service.cta.message}
@@ -81,13 +87,12 @@ export default function ServicesPage() {
 
                 {/* ICON BLOCK */}
                 <div className={`flex justify-center ${reverse ? "md:order-1" : ""}`}>
-                  
                   <div className="relative">
 
-                    {/* subtle glow */}
+                    {/* glow */}
                     <div className="absolute inset-0 bg-[#0B1F3A]/10 blur-2xl rounded-full scale-110"></div>
 
-                    {/* main card */}
+                    {/* card */}
                     <div className="relative w-64 h-64 rounded-3xl bg-white shadow-xl border border-gray-200 flex items-center justify-center">
 
                       <div className="w-24 h-24 rounded-2xl bg-[#0B1F3A] flex items-center justify-center">
@@ -97,7 +102,6 @@ export default function ServicesPage() {
                     </div>
 
                   </div>
-
                 </div>
 
               </div>
@@ -107,27 +111,40 @@ export default function ServicesPage() {
         );
       })}
 
-      {/* TRUST SECTION */}
+      {/* TRUST SECTION (SVG LEFT, TEXT RIGHT) */}
       <Section>
         <div className="bg-gray-50 py-24">
           <Container>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-10 text-center">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12">
 
-              <div>
-                <p className="text-4xl font-bold text-[#0B1F3A]">30+</p>
-                <p className="mt-2 text-sm text-gray-600">Years Experience</p>
-              </div>
+              {STATS.map((stat) => {
+                const Icon = STAT_ICON_MAP[stat.icon];
 
-              <div>
-                <p className="text-4xl font-bold text-[#0B1F3A]">100%</p>
-                <p className="mt-2 text-sm text-gray-600">Compliance Focus</p>
-              </div>
+                return (
+                  <div
+                    key={stat.label}
+                    className="flex items-center gap-6"
+                  >
 
-              <div>
-                <p className="text-4xl font-bold text-[#0B1F3A]">Pan India</p>
-                <p className="mt-2 text-sm text-gray-600">Service Coverage</p>
-              </div>
+                    {/* SVG LEFT (BIG) */}
+                    <div className="w-24 h-24 rounded-2xl bg-[#0B1F3A]/10 flex items-center justify-center shrink-0">
+                      <Icon size={48} className="text-[#0B1F3A]" />
+                    </div>
+
+                    {/* TEXT RIGHT */}
+                    <div>
+                      <p className="text-4xl font-bold text-[#0B1F3A]">
+                        {stat.value}
+                      </p>
+                      <p className="mt-2 text-sm text-gray-600">
+                        {stat.label}
+                      </p>
+                    </div>
+
+                  </div>
+                );
+              })}
 
             </div>
 
@@ -140,7 +157,7 @@ export default function ServicesPage() {
         <div className="text-center">
           <Container size="sm">
 
-            <h2 className="heading heading-accent text-3xl md:text-4xl lg:text-5xl">
+            <h2 className="heading heading-accent heading-accent-center text-3xl md:text-4xl lg:text-5xl">
               Talk to a Chartered Accountant Today
             </h2>
 

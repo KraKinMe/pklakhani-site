@@ -29,22 +29,28 @@
 }
 
 
-
 /* ================================
    COMPONENTS (REUSABLE UI)
 ================================ */
 @layer components {
 
-  /* Typography */
+  /* ================================
+     TYPOGRAPHY
+  ================================= */
+
   .heading {
-    @apply font-semibold tracking-tight;
+    @apply font-semibold tracking-tight text-left;
   }
 
   .subtext {
     @apply text-gray-600 leading-relaxed;
   }
 
-  /* Buttons */
+
+  /* ================================
+     BUTTONS
+  ================================= */
+
   .btn {
     @apply px-6 py-3 rounded-md text-sm transition flex items-center justify-center;
   }
@@ -61,7 +67,11 @@
     @apply border border-gray-500 text-gray-200 hover:border-white hover:text-white;
   }
 
-  /* Layout */
+
+  /* ================================
+     LAYOUT
+  ================================= */
+
   .section {
     @apply py-24;
   }
@@ -79,14 +89,46 @@
     @apply max-w-4xl mx-auto px-6;
   }
 
-  /* Accent underline */
+
+  /* ================================
+     GLOBAL ACCENT HEADING (CENTERED)
+  ================================= */
+
   .heading-accent {
-    @apply relative block w-fit mx-auto;
+    @apply relative inline-block mx-auto text-center;
   }
 
   .heading-accent::after {
     content: "";
-    @apply block w-12 h-[2px] mt-2 mx-auto;
+    @apply block w-12 h-[2px] mt-2;
     background: var(--color-accent);
+
+    /* Center underline */
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Optional helper for centered sections */
+  .heading-accent-center {
+    @apply text-center;
+  }
+
+
+  /* ================================
+     SERVICE-SPECIFIC HEADING (LEFT)
+  ================================= */
+
+  .service-heading {
+    @apply font-semibold tracking-tight text-left relative inline-block;
+  }
+
+  .service-heading::after {
+    content: "";
+    @apply block w-12 h-[2px] mt-2;
+    background: var(--color-accent);
+
+    /* Left underline */
+    margin-left: 0;
+    margin-right: auto;
   }
 }
