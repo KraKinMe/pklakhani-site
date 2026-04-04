@@ -19,6 +19,9 @@ import {
 
 export const metadata = generateMeta("services");
 
+// ✅ TOGGLE HERE
+const ENABLE_ALTERNATE = false;
+
 // map icons
 const ICON_MAP: Record<string, any> = {
   audit: ShieldCheck,
@@ -37,7 +40,9 @@ export default function ServicesPage() {
       {/* SERVICES */}
       {SERVICES.map((service, index) => {
         const Icon = ICON_MAP[service.icon];
-        const reverse = index % 2 !== 0;
+
+        // ✅ Controlled alternation
+        const reverse = ENABLE_ALTERNATE && index % 2 !== 0;
 
         return (
           <Section key={service.title}>
@@ -52,12 +57,12 @@ export default function ServicesPage() {
                     {service.title}
                   </h2>
 
-                  <p className="mt-5 text-gray-600 text-base md:text-lg leading-relaxed">
+                  <p className="mt-5 text-gray-600 text-lg md:text-xl leading-relaxed">
                     {service.description}
                   </p>
 
                   {/* BULLETS */}
-                  <ul className="mt-6 space-y-3 text-gray-700 text-base md:text-lg">
+                  <ul className="mt-6 space-y-3 text-gray-700 text-lg md:text-xl">
                     {service.bullets.map((item) => (
                       <li key={item}>• {item}</li>
                     ))}
@@ -74,15 +79,15 @@ export default function ServicesPage() {
 
                 </div>
 
-                {/* ICON VISUAL BLOCK (UPGRADED) */}
+                {/* ICON BLOCK */}
                 <div className={`flex justify-center ${reverse ? "md:order-1" : ""}`}>
                   
                   <div className="relative">
 
-                    {/* Glow background */}
+                    {/* subtle glow */}
                     <div className="absolute inset-0 bg-[#0B1F3A]/10 blur-2xl rounded-full scale-110"></div>
 
-                    {/* Main card */}
+                    {/* main card */}
                     <div className="relative w-64 h-64 rounded-3xl bg-white shadow-xl border border-gray-200 flex items-center justify-center">
 
                       <div className="w-24 h-24 rounded-2xl bg-[#0B1F3A] flex items-center justify-center">
