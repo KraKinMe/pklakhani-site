@@ -49,12 +49,12 @@ export default function PageHero({
           <Container size="sm">
             <div className="relative z-10 text-center text-white">
 
-              <h1 className="heading heading-accent text-3xl md:text-4xl">
+              <h1 className="heading heading-accent text-3xl md:text-6xl">
                 {title}
               </h1>
 
               {description && (
-                <p className="mt-4 text-gray-300 max-w-2xl mx-auto">
+                <p className="mt-4 text-gray-300 max-w-3xl mx-auto">
                   {description}
                 </p>
               )}
