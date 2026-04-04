@@ -37,6 +37,7 @@ export default function ContactPage() {
             <div>
               <h3 className="font-semibold">Phone</h3>
               <CTAButton
+                className="text-sm text-gray-600"
                 type="call"
                 label={SITE.contact.phone}
                 phone={SITE.contact.phone}
@@ -46,6 +47,7 @@ export default function ContactPage() {
             <div>
               <h3 className="font-semibold">Email</h3>
               <CTAButton
+                className="text-sm text-gray-600"
                 type="email"
                 label={SITE.contact.email}
                 email={SITE.contact.email}

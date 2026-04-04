@@ -2,7 +2,7 @@
 
 export const HERO = {
   highlights: [
-    { label: "3+ Decades of Experience" },
+    { label: "30+ Years of Experience" },
     { label: "Pan India Services" },
     { label: "Corporate & SME Focus" },
   ],
@@ -26,16 +26,31 @@ export const SERVICES_SECTION = {
     "Comprehensive audit, taxation, and advisory solutions designed to ensure compliance, optimize financial performance, and support business growth.",
 };
 
+// ✅ UPGRADED BUT COMPATIBLE
 export const SERVICES = [
   {
     title: "Audit & Assurance",
     subtitle: "Statutory • Internal • Financial Reviews",
     description:
       "Ensuring compliance, accuracy, and transparency in financial reporting.",
-    highlight: false,
+
+    bullets: [
+      "Statutory Audit & Internal Audit",
+      "Financial Statement Review",
+      "Risk Assessment & Compliance",
+    ],
+
+    icon: "audit",
+
+    // ✅ NEW (for future use)
+    highlightPoints: [
+      "Ensure regulatory compliance",
+      "Improve financial transparency",
+      "Identify business risks early",
+    ],
 
     cta: {
-      label: "Discuss Audit Requirements",
+      label: "Talk to an Audit Expert",
       message:
         "Hi, I would like to discuss Audit & Assurance services.",
     },
@@ -45,11 +60,24 @@ export const SERVICES = [
     title: "Income Tax & GST",
     subtitle: "Planning • Filing • Compliance",
     description:
-      "End-to-end tax planning and compliance services.",
-    highlight: true,
+      "End-to-end tax planning and compliance services for individuals and businesses.",
+
+    bullets: [
+      "Income Tax Filing & Planning",
+      "GST Registration & Returns",
+      "Tax Optimization Strategies",
+    ],
+
+    icon: "tax",
+
+    highlightPoints: [
+      "Reduce tax liability legally",
+      "Avoid penalties & notices",
+      "Ensure timely compliance",
+    ],
 
     cta: {
-      label: "Discuss Tax & GST",
+      label: "Get Tax Help Now",
       message:
         "Hi, I would like to discuss Income Tax and GST services.",
     },
@@ -59,8 +87,21 @@ export const SERVICES = [
     title: "Business Advisory & Structuring",
     subtitle: "Structuring • Compliance • Strategy",
     description:
-      "Helping businesses scale with strategic financial decisions.",
-    highlight: false,
+      "Helping businesses scale with strategic financial and regulatory decisions.",
+
+    bullets: [
+      "Business Structuring & Setup",
+      "Financial Strategy Consulting",
+      "Regulatory Advisory",
+    ],
+
+    icon: "advisory",
+
+    highlightPoints: [
+      "Improve business efficiency",
+      "Make data-driven decisions",
+      "Scale with confidence",
+    ],
 
     cta: {
       label: "Get Advisory Support",
@@ -72,21 +113,39 @@ export const SERVICES = [
   {
     title: "Accounting & Payroll",
     subtitle:
-      "Bookkeeping & Accounting • Payroll Processing • BPO Services",
+      "Bookkeeping • Payroll Processing • BPO Services",
     description:
-      "Accurate bookkeeping and financial reporting.",
-    highlight: true,
+      "Accurate bookkeeping and payroll management for smooth business operations.",
+
+    bullets: [
+      "Bookkeeping & Financial Records",
+      "Payroll Processing",
+      "Outsourced Accounting (BPO)",
+    ],
+
+    icon: "payroll",
+
+    highlightPoints: [
+      "Save operational time",
+      "Ensure payroll accuracy",
+      "Focus on core business",
+    ],
 
     cta: {
-      label: "Discuss Accounting & Payroll Needs",
+      label: "Simplify Your Accounting",
       message:
         "Hi, I would like to discuss Accounting and Payroll services.",
     },
   },
 ];
 
-// config/content.ts
-// config/content.ts
+// ✅ NEW (HIGH IMPACT)
+export const STATS = [
+  { value: "30+", label: "Years Experience" },
+  { value: "500+", label: "Clients Served" },
+  { value: "100%", label: "Compliance Focus" },
+  { value: "Pan India", label: "Service Coverage" },
+];
 
 export const PAGE_HERO = {
   about: {

@@ -10,6 +10,7 @@
     --color-text: #111827;
     --color-muted: #6B7280;
     --color-border: #D1D5DB;
+    color-scheme: light;
   }
 
   html {
@@ -26,6 +27,8 @@
     color: white;
   }
 }
+
+
 
 /* ================================
    COMPONENTS (REUSABLE UI)

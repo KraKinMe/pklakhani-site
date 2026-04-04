@@ -22,10 +22,11 @@ export default function Industries() {
             {INDUSTRIES.map((item) => (
               <span
                 key={item}
-                className="px-5 py-2.5 text-sm font-medium text-gray-800 
+                className="px-5 py-2.5 text-sm font-medium 
+                text-gray-900 bg-white 
                 border border-gray-300 rounded-full 
-                bg-white shadow-sm 
-                transition hover:border-black hover:shadow-md"
+                shadow-sm 
+                transition hover:border-gray-900 hover:shadow-md"
               >
                 {item}
               </span>
