@@ -1,4 +1,24 @@
-// config/content.ts
+/** Site chrome (root layout, floating actions). */
+export const LAYOUT = {
+  floatingWhatsAppLabel: "Chat with Us",
+} as const;
+
+/** Reusable UI labels for buttons and links. */
+export const LABELS = {
+  call: "Call",
+  callNow: "Call Now",
+  email: "Email",
+  chatOnWhatsApp: "Chat on WhatsApp",
+} as const;
+
+export const HOME_HERO = {
+  imageSrc: "/images/hero_ca.webp",
+  imageAlt: "Chartered Accountant Meeting",
+  title: "Chartered Accountants for SMEs & Corporates",
+  accent: "Audit, Tax & Strategic Advisory",
+  description:
+    "Enabling corporates and SMEs with expert statutory audit, taxation, and regulatory compliance services.",
+} as const;
 
 export const HERO = {
   highlights: [
@@ -7,6 +27,12 @@ export const HERO = {
     { label: "Corporate & SME Focus" },
   ],
 };
+
+export const INDUSTRIES_SECTION = {
+  title: "Industries We Serve",
+  description:
+    "We work with businesses across diverse sectors, providing tailored audit, taxation, and advisory solutions aligned with industry-specific requirements.",
+} as const;
 
 export const INDUSTRIES = [
   "Automobiles",
@@ -26,7 +52,80 @@ export const SERVICES_SECTION = {
     "Comprehensive audit, taxation, and advisory solutions designed to ensure compliance, optimize financial performance, and support business growth.",
 };
 
-// ✅ UPGRADED BUT COMPATIBLE
+export const HOME_CTA_SECTION = {
+  title: "Need Assistance?",
+  description:
+    "Connect with our team to discuss your requirements and get expert guidance.",
+  whatsappLabel: "Talk to a Chartered Accountant",
+} as const;
+
+export const SERVICES_PAGE_CTA = {
+  title: "Talk to a Chartered Accountant Today",
+  description:
+    "Get expert advice on audit, taxation, and compliance tailored to your business.",
+} as const;
+
+export const ABOUT = {
+  firm: {
+    title: "Our Firm",
+    paragraphs: [
+      "With over three decades of experience, we provide audit, taxation, and advisory services to corporates and SMEs.",
+      "Our approach focuses on compliance, accuracy, and timely execution of financial and regulatory requirements while supporting long-term business growth.",
+    ],
+  },
+  approach: {
+    title: "Our Approach",
+    points: [
+      {
+        lead: "Client-Centric Understanding",
+        body: "We begin by understanding your business, industry, and specific requirements to deliver relevant solutions.",
+      },
+      {
+        lead: "Tailored Solutions",
+        body: "Customized strategies for audit, taxation, and compliance aligned with your operational needs.",
+      },
+      {
+        lead: "Accuracy & Compliance",
+        body: "Ensuring adherence to all statutory and regulatory requirements with precision.",
+      },
+      {
+        lead: "Timely Execution",
+        body: "Delivering services within defined timelines with consistency and reliability.",
+      },
+      {
+        lead: "Proactive Advisory",
+        body: "Identifying risks and opportunities to support better financial and strategic decisions.",
+      },
+      {
+        lead: "Technology-Driven Processes",
+        body: "Leveraging modern tools to enhance efficiency, reporting, and transparency.",
+      },
+      {
+        lead: "Confidentiality & Integrity",
+        body: "Maintaining the highest standards of professionalism, trust, and data security.",
+      },
+    ],
+  },
+} as const;
+
+export const CONTACT_PAGE = {
+  headings: {
+    address: "Office Address",
+    phone: "Phone",
+    email: "Email",
+  },
+  whatsappLabel: "WhatsApp",
+} as const;
+
+export const CAREERS = {
+  intro:
+    "We are always looking for motivated individuals who are eager to learn, take responsibility, and grow in a professional environment.",
+  applicationFormUrl:
+    "https://docs.google.com/forms/d/e/1FAIpQLSdKeW8w7G_LzEqNntfKIYgxs7_PdU8k-REx4NRFGHanFfjO2Q/viewform?usp=publish-editor",
+  formButtonLabel: "Apply via Form",
+  whatsappButtonLabel: "Apply via WhatsApp",
+} as const;
+
 export const SERVICES = [
   {
     title: "Audit & Assurance",
@@ -42,7 +141,6 @@ export const SERVICES = [
 
     icon: "audit",
 
-    // ✅ NEW (for future use)
     highlightPoints: [
       "Ensure regulatory compliance",
       "Improve financial transparency",
@@ -139,7 +237,6 @@ export const SERVICES = [
   },
 ];
 
-// ✅ NEW (HIGH IMPACT)
 export const STATS = [
   {
     value: "30+",

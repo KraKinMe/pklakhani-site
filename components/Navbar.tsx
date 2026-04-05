@@ -7,6 +7,7 @@ import { Menu, X } from "lucide-react";
 
 import Container from "@/components/ui/Container";
 import CTAButton from "@/components/common/CTAButton";
+import ThemeToggle from "@/components/ThemeToggle";
 
 import { SITE } from "@/config/site";
 import { NAVIGATION } from "@/config/navigation";
@@ -16,7 +17,6 @@ export default function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
-  // ✅ SCROLL LOCK + NO LAYOUT SHIFT
   useEffect(() => {
     if (open) {
       const scrollBarWidth =
@@ -37,26 +37,29 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="sticky top-0 z-50 bg-[#0B1F3A] border-b border-white/10">
+      <a
+        href="#main-content"
+        className="fixed top-4 left-4 z-[200] -translate-y-[150%] rounded-md border border-nav-border bg-nav-bg px-4 py-2 text-sm font-medium text-nav-fg shadow-lg transition-transform duration-200 focus:translate-y-0 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-[var(--brand-accent)]"
+      >
+        Skip to main content
+      </a>
+      <nav className="sticky top-0 z-50 border-b border-nav-border bg-nav-bg">
         <Container>
-          <div className="h-20 flex items-center justify-between">
-
-            {/* BRAND */}
+          <div className="flex h-20 items-center justify-between">
             <Link href="/" className="flex flex-col leading-tight">
-              <span className="font-semibold tracking-tight text-xl md:text-2xl lg:text-3xl text-white">
+              <span className="text-xl font-semibold tracking-tight text-nav-fg md:text-2xl lg:text-3xl">
                 {SITE.brand.prefix}{" "}
-                <span className="text-[#C9A14A]">
+                <span className="text-[var(--brand-accent)]">
                   {SITE.brand.highlight}
                 </span>{" "}
                 {SITE.brand.suffix}
               </span>
-              <span className="text-xs text-gray-300 -mt-1">
-                Chartered Accountants • Since 1994
+              <span className="-mt-1 text-xs text-nav-muted">
+                {SITE.taglineNav}
               </span>
             </Link>
 
-            {/* DESKTOP NAV */}
-            <div className="hidden md:flex items-center gap-6 text-sm">
+            <div className="hidden items-center gap-6 text-sm md:flex">
               {NAVIGATION.map((link) => {
                 const isActive = pathname === link.href;
 
@@ -66,14 +69,14 @@ export default function Navbar() {
                     href={link.href}
                     className={`relative pb-1 transition ${
                       isActive
-                        ? "text-white"
-                        : "text-gray-300 hover:text-white"
+                        ? "text-nav-fg"
+                        : "text-nav-muted hover:text-nav-fg"
                     }`}
                   >
                     {link.label}
 
                     <span
-                      className={`absolute left-0 bottom-0 h-[2px] bg-[#C9A14A] transition-all ${
+                      className={`absolute bottom-0 left-0 h-[2px] bg-[var(--brand-accent)] transition-all ${
                         isActive ? "w-full" : "w-0"
                       }`}
                     />
@@ -82,105 +85,96 @@ export default function Navbar() {
               })}
             </div>
 
-            {/* RIGHT SIDE */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 md:gap-3">
+              <ThemeToggle />
 
-              {/* Desktop CTA */}
-              <div className="hidden md:flex items-center gap-3">
+              <div className="hidden items-center gap-3 md:flex">
                 <CTAButton
                   type="call"
                   label="Call"
                   phone={SITE.contact.phone}
-                  className="text-sm text-gray-300 hover:text-white"
+                  className="text-sm text-nav-muted transition hover:text-nav-fg"
                 />
 
                 <CTAButton
                   type="whatsapp"
                   label="Chat"
                   message={CTA.general.message}
-                  className="bg-green-600 text-white px-4 py-2 rounded-md text-sm hover:bg-green-700 transition"
+                  className="rounded-md bg-green-600 px-4 py-2 text-sm text-white transition hover:bg-green-700"
                 />
               </div>
 
-              {/* Hamburger */}
               <button
+                type="button"
                 onClick={() => setOpen(!open)}
-                className="md:hidden p-2 rounded-md hover:bg-white/10 transition text-white"
+                className="rounded-md p-2 text-nav-fg transition hover:bg-nav-hover md:hidden"
               >
                 {open ? <X size={28} /> : <Menu size={28} />}
               </button>
-
             </div>
           </div>
         </Container>
       </nav>
 
-      {/* OVERLAY */}
       {open && (
         <div
-          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 md:hidden"
+          className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm md:hidden"
           onClick={() => setOpen(false)}
+          aria-hidden
         />
       )}
 
-      {/* MOBILE MENU */}
       <div
-        className={`fixed top-0 right-0 h-full w-[80%] max-w-sm bg-[#0B1F3A] shadow-2xl border-l border-white/10 z-50 transform transition-transform duration-300 md:hidden ${
+        className={`fixed top-0 right-0 z-50 h-full w-[80%] max-w-sm transform border-l border-nav-border bg-nav-bg shadow-2xl transition-transform duration-300 md:hidden ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <div className="p-6 space-y-8">
-
-          {/* Close */}
+        <div className="space-y-8 p-6">
           <div className="flex justify-end">
             <button
+              type="button"
               onClick={() => setOpen(false)}
-              className="text-white p-2 rounded-md hover:bg-white/10 transition"
+              className="rounded-md p-2 text-nav-fg transition hover:bg-nav-hover"
             >
               <X size={26} />
             </button>
           </div>
 
-          {/* Links */}
           <div className="space-y-5 text-base">
             {NAVIGATION.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="block text-gray-300 hover:text-white transition"
+                className="block text-nav-muted transition hover:text-nav-fg"
               >
                 {link.label}
               </Link>
             ))}
           </div>
 
-          {/* CTA */}
-          <div className="border-t border-white/10 pt-6 space-y-4">
-
+          <div className="space-y-4 border-t border-nav-border pt-6">
             <CTAButton
               type="call"
               label="Call"
               phone={SITE.contact.phone}
-              className="block text-white font-medium"
+              className="block font-medium text-nav-fg"
             />
 
             <CTAButton
               type="email"
               label="Email"
               email={SITE.contact.email}
-              className="block text-white font-medium"
+              className="block font-medium text-nav-fg"
             />
 
             <CTAButton
               type="whatsapp"
               label="Chat"
               message={CTA.general.message}
-              className="block bg-green-600 text-white px-4 py-2 rounded-md text-center hover:bg-green-700 transition"
+              className="block rounded-md bg-green-600 px-4 py-2 text-center text-white transition hover:bg-green-700"
             />
-
           </div>
-
         </div>
       </div>
     </>

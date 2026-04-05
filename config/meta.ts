@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import { SITE } from "./site";
-
-const BASE_URL = SITE.baseUrl;
+import { SITE, getSiteUrl } from "./site";
+import { absoluteUrl, OG_IMAGE_PATH } from "./seo";
 
 export const META = {
   home: {
@@ -38,16 +37,17 @@ export const META = {
       "Explore career opportunities in audit, taxation and advisory.",
     path: "/careers",
   },
-};
+} as const;
+
+const ogImage = absoluteUrl(OG_IMAGE_PATH);
 
 /**
- * Generate Next.js Metadata from config
+ * Per-route metadata (title, description, canonical, OG/Twitter).
  */
-export function generateMeta(
-  key: keyof typeof META
-): Metadata {
+export function generateMeta(key: keyof typeof META): Metadata {
   const meta = META[key];
-  const url = `${BASE_URL}${meta.path}`;
+  const base = getSiteUrl();
+  const url = `${base}${meta.path}`;
 
   return {
     title: meta.title,
@@ -67,10 +67,11 @@ export function generateMeta(
       description: meta.description,
       url,
       siteName: SITE.name,
+      locale: "en_IN",
       type: "website",
       images: [
         {
-          url: `${BASE_URL}/images/hero_ca.png`, // fallback OG image
+          url: ogImage,
           width: 1200,
           height: 630,
           alt: SITE.name,
@@ -82,7 +83,7 @@ export function generateMeta(
       card: "summary_large_image",
       title: meta.title,
       description: meta.description,
-      images: [`${BASE_URL}/images/hero_ca.png`],
+      images: [ogImage],
     },
   };
 }

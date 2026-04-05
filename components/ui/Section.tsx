@@ -6,7 +6,9 @@ export default function Section({
   dark?: boolean;
 }) {
   return (
-    <section className={`${dark ? "section-dark" : "bg-white"} section`}>
+    <section
+      className={`${dark ? "section-dark" : "bg-page-bg"} section`}
+    >
       {children}
     </section>
   );

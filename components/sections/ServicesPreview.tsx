@@ -1,8 +1,6 @@
 import Section from "@/components/ui/Section";
 import Container from "@/components/ui/Container";
 
-import WhatsAppCTA from "@/components/common/WhatsAppCTA";
-
 import {
   SERVICES,
   SERVICES_SECTION,
@@ -15,11 +13,11 @@ export default function ServicesPreview() {
         <Container>
 
           {/* Heading */}
-          <h2 className="heading heading-accent text-2xl md:text-3xl text-gray-900">
+          <h2 className="heading heading-accent text-2xl md:text-3xl">
             {SERVICES_SECTION.title}
           </h2>
 
-          <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
+          <p className="mx-auto mt-4 max-w-2xl text-page-muted">
             {SERVICES_SECTION.description}
           </p>
 
@@ -29,17 +27,17 @@ export default function ServicesPreview() {
             {SERVICES.map((service) => (
               <div
                 key={service.title}
-                className="p-6 border border-gray-300 rounded-lg bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg hover:border-black"
+                className="rounded-lg border border-card-border bg-card p-6 shadow-sm transition hover:-translate-y-1 hover:border-page-fg hover:shadow-lg"
               >
-                <h3 className="font-semibold text-lg text-gray-900">
+                <h3 className="text-lg font-semibold text-page-fg">
                   {service.title}
                 </h3>
 
-                <p className="text-xs font-medium text-gray-500 mt-2 uppercase tracking-wide">
+                <p className="mt-2 text-xs font-medium uppercase tracking-wide text-page-muted">
                   {service.subtitle}
                 </p>
 
-                <p className="text-sm text-gray-600 mt-3 leading-relaxed">
+                <p className="mt-3 text-sm leading-relaxed text-page-muted">
                   {service.description}
                 </p>
 

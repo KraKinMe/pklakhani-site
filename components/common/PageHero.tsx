@@ -35,6 +35,7 @@ export default function PageHero({
           alt={title}
           fill
           priority
+          quality={82}
           sizes="100vw"
           className={`object-cover ${positionClass}`}
         />
@@ -48,13 +49,16 @@ export default function PageHero({
         <div className="min-h-[30vh] md:min-h-[40vh] flex items-center">
           <Container size="sm">
             <div className="relative z-10 text-center text-white">
-
-              <h1 className="heading heading-accent text-3xl md:text-6xl">
+              {/*
+                Fixed light-on-dark typography: do not use `.heading` here — it applies
+                `text-page-fg`, which tracks the global theme while the hero image/overlay does not.
+              */}
+              <h1 className="heading-accent text-3xl font-semibold tracking-tight text-white md:text-6xl">
                 {title}
               </h1>
 
               {description && (
-                <p className="mt-4 text-gray-300 max-w-3xl mx-auto">
+                <p className="mx-auto mt-4 max-w-3xl text-zinc-300">
                   {description}
                 </p>
               )}

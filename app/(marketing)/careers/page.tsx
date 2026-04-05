@@ -5,57 +5,42 @@ import PageHero from "@/components/common/PageHero";
 import CTAButton from "@/components/common/CTAButton";
 
 import { generateMeta } from "@/config/meta";
-import { PAGE_HERO } from "@/config/content";
+import { CAREERS, PAGE_HERO } from "@/config/content";
 import { CTA } from "@/config/cta";
 
 export const metadata = generateMeta("careers");
 
 export default function CareersPage() {
-  const form =
-    "https://docs.google.com/forms/d/e/1FAIpQLSdKeW8w7G_LzEqNntfKIYgxs7_PdU8k-REx4NRFGHanFfjO2Q/viewform?usp=publish-editor";
-
   return (
-    <main>
-
-      {/* HERO (Reusable) */}
+    <div>
       <PageHero {...PAGE_HERO.careers} />
 
-      {/* VALUE + CTA */}
       <Section>
         <div className="text-center">
           <Container size="sm">
-
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              We are always looking for motivated individuals who are eager to learn,
-              take responsibility, and grow in a professional environment.
+            <p className="mx-auto max-w-2xl text-page-muted">
+              {CAREERS.intro}
             </p>
 
-            {/* ACTIONS */}
-            <div className="mt-10 flex justify-center gap-4 flex-wrap">
-
-              {/* WhatsApp CTA */}
+            <div className="mt-10 flex flex-wrap justify-center gap-4">
               <CTAButton
                 type="whatsapp"
-                label="Apply via WhatsApp"
+                label={CAREERS.whatsappButtonLabel}
                 message={CTA.careers.message}
               />
 
-              {/* Form CTA */}
               <a
-                href={form}
+                href={CAREERS.applicationFormUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-secondary"
               >
-                Apply via Form
+                {CAREERS.formButtonLabel}
               </a>
-
             </div>
-
           </Container>
         </div>
       </Section>
-
-    </main>
+    </div>
   );
 }

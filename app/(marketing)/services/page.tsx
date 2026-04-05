@@ -6,10 +6,17 @@ import CTAButton from "@/components/common/CTAButton";
 import WhatsAppCTA from "@/components/common/WhatsAppCTA";
 
 import { generateMeta } from "@/config/meta";
-import { PAGE_HERO, SERVICES, STATS } from "@/config/content";
+import {
+  LABELS,
+  PAGE_HERO,
+  SERVICES,
+  SERVICES_PAGE_CTA,
+  STATS,
+} from "@/config/content";
 import { CTA } from "@/config/cta";
 import { SITE } from "@/config/site";
 
+import type { LucideIcon } from "lucide-react";
 import {
   ShieldCheck,
   Calculator,
@@ -26,15 +33,14 @@ export const metadata = generateMeta("services");
 const ENABLE_ALTERNATE = false;
 
 // service icons
-const ICON_MAP: Record<string, any> = {
+const ICON_MAP: Record<string, LucideIcon> = {
   audit: ShieldCheck,
   tax: Calculator,
   advisory: LineChart,
   payroll: Users,
 };
 
-// stats icons
-const STAT_ICON_MAP: Record<string, any> = {
+const STAT_ICON_MAP: Record<string, LucideIcon> = {
   clock: Clock,
   check: CheckCircle,
   india: Map,
@@ -42,7 +48,7 @@ const STAT_ICON_MAP: Record<string, any> = {
 
 export default function ServicesPage() {
   return (
-    <main>
+    <div>
 
       {/* HERO */}
       <PageHero {...PAGE_HERO.services} />
@@ -61,15 +67,15 @@ export default function ServicesPage() {
                 {/* TEXT */}
                 <div className={`${reverse ? "md:order-2" : ""} w-full text-left`}>
 
-                  <h2 className="service-heading text-3xl md:text-4xl lg:text-5xl text-gray-900">
+                  <h2 className="service-heading text-3xl md:text-4xl lg:text-5xl">
                     {service.title}
                   </h2>
 
-                  <p className="mt-5 text-gray-600 text-lg md:text-xl leading-relaxed">
+                  <p className="mt-5 text-lg leading-relaxed text-page-muted md:text-xl">
                     {service.description}
                   </p>
 
-                  <ul className="mt-6 space-y-3 text-gray-700 text-lg md:text-xl">
+                  <ul className="mt-6 space-y-3 text-lg text-page-fg md:text-xl">
                     {service.bullets.map((item) => (
                       <li key={item}>• {item}</li>
                     ))}
@@ -90,12 +96,10 @@ export default function ServicesPage() {
                   <div className="relative">
 
                     {/* glow */}
-                    <div className="absolute inset-0 bg-[#0B1F3A]/10 blur-2xl rounded-full scale-110"></div>
+                    <div className="absolute inset-0 scale-110 rounded-full bg-brand/10 blur-2xl" />
 
-                    {/* card */}
-                    <div className="relative w-64 h-64 rounded-3xl bg-white shadow-xl border border-gray-200 flex items-center justify-center">
-
-                      <div className="w-24 h-24 rounded-2xl bg-[#0B1F3A] flex items-center justify-center">
+                    <div className="relative flex h-64 w-64 items-center justify-center rounded-3xl border border-card-border bg-card shadow-xl">
+                      <div className="flex h-24 w-24 items-center justify-center rounded-2xl bg-brand">
                         <Icon size={48} strokeWidth={1.5} className="text-white" />
                       </div>
 
@@ -113,7 +117,7 @@ export default function ServicesPage() {
 
       {/* TRUST SECTION (SVG LEFT, TEXT RIGHT) */}
       <Section>
-        <div className="bg-gray-50 py-24">
+        <div className="bg-muted-surface py-24">
           <Container>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12">
@@ -127,17 +131,18 @@ export default function ServicesPage() {
                     className="flex items-center gap-6"
                   >
 
-                    {/* SVG LEFT (BIG) */}
-                    <div className="w-24 h-24 rounded-2xl bg-[#0B1F3A]/10 flex items-center justify-center shrink-0">
-                      <Icon size={48} className="text-[#0B1F3A]" />
+                    <div className="flex h-24 w-24 shrink-0 items-center justify-center rounded-2xl bg-brand/10 dark:bg-white/10">
+                      <Icon
+                        size={48}
+                        className="text-brand dark:text-brand-accent"
+                      />
                     </div>
 
-                    {/* TEXT RIGHT */}
                     <div>
-                      <p className="text-4xl font-bold text-[#0B1F3A]">
+                      <p className="text-4xl font-bold text-brand dark:text-white">
                         {stat.value}
                       </p>
-                      <p className="mt-2 text-sm text-gray-600">
+                      <p className="mt-2 text-sm text-page-muted dark:text-zinc-400">
                         {stat.label}
                       </p>
                     </div>
@@ -158,26 +163,25 @@ export default function ServicesPage() {
           <Container size="sm">
 
             <h2 className="heading heading-accent heading-accent-center text-3xl md:text-4xl lg:text-5xl">
-              Talk to a Chartered Accountant Today
+              {SERVICES_PAGE_CTA.title}
             </h2>
 
-            <p className="mt-5 text-white/80 text-base md:text-lg">
-              Get expert advice on audit, taxation, and compliance tailored to your business.
+            <p className="mt-5 text-base text-zinc-300 md:text-lg">
+              {SERVICES_PAGE_CTA.description}
             </p>
 
             <div className="mt-10 flex justify-center gap-4 flex-wrap">
-
               <CTAButton
                 type="whatsapp"
-                label="Chat on WhatsApp"
+                label={LABELS.chatOnWhatsApp}
                 message={CTA.general.message}
               />
 
               <a
                 href={`tel:${SITE.contact.phone}`}
-                className="px-6 py-3 rounded-md border border-white/30 text-white text-base font-medium hover:bg-white/10 transition"
+                className="rounded-md border border-white/30 px-6 py-3 text-base font-medium text-white transition hover:bg-white/10"
               >
-                Call Now
+                {LABELS.callNow}
               </a>
 
             </div>
@@ -186,6 +190,6 @@ export default function ServicesPage() {
         </div>
       </Section>
 
-    </main>
+    </div>
   );
 }

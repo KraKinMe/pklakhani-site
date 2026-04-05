@@ -5,7 +5,7 @@ import PageHero from "@/components/common/PageHero";
 import CTAButton from "@/components/common/CTAButton";
 
 import { generateMeta } from "@/config/meta";
-import { PAGE_HERO } from "@/config/content";
+import { CONTACT_PAGE, LABELS, PAGE_HERO } from "@/config/content";
 import { SITE } from "@/config/site";
 import { CTA } from "@/config/cta";
 
@@ -13,31 +13,23 @@ export const metadata = generateMeta("contact");
 
 export default function ContactPage() {
   return (
-    <main>
+    <div>
+      <PageHero {...PAGE_HERO.contact} position="top" />
 
-      {/* HERO (Reusable) */}
-      <PageHero 
-        {...PAGE_HERO.contact} 
-        position="top"
-      />
-
-      {/* CONTACT INFO */}
       <Section>
         <Container size="sm">
-
-          <div className="space-y-6 text-gray-700">
-
+          <div className="space-y-6 text-page-fg">
             <div>
-              <h3 className="font-semibold">Office Address</h3>
-              <p className="text-sm text-gray-600">
-                {SITE.address.line}
-              </p>
+              <h3 className="font-semibold">
+                {CONTACT_PAGE.headings.address}
+              </h3>
+              <p className="text-sm text-page-muted">{SITE.address.line}</p>
             </div>
 
             <div>
-              <h3 className="font-semibold">Phone</h3>
+              <h3 className="font-semibold">{CONTACT_PAGE.headings.phone}</h3>
               <CTAButton
-                className="text-sm text-gray-600"
+                className="text-sm text-page-muted hover:text-page-fg"
                 type="call"
                 label={SITE.contact.phone}
                 phone={SITE.contact.phone}
@@ -45,47 +37,41 @@ export default function ContactPage() {
             </div>
 
             <div>
-              <h3 className="font-semibold">Email</h3>
+              <h3 className="font-semibold">{CONTACT_PAGE.headings.email}</h3>
               <CTAButton
-                className="text-sm text-gray-600"
+                className="text-sm text-page-muted hover:text-page-fg"
                 type="email"
                 label={SITE.contact.email}
                 email={SITE.contact.email}
               />
             </div>
-
           </div>
 
-          {/* ACTIONS */}
-          <div className="mt-8 flex gap-4 flex-wrap">
-
+          <div className="mt-8 flex flex-wrap gap-4">
             <CTAButton
               type="whatsapp"
-              label="WhatsApp"
+              label={CONTACT_PAGE.whatsappLabel}
               message={CTA.general.message}
             />
 
             <a
-                href={`tel:${SITE.contact.phone}`}
-                className="px-6 py-2.5 rounded-md border border-white/30 text-white text-sm font-medium hover:bg-white/10 transition inline-flex items-center justify-center"
-              >
-                Call Now
-              </a>
-
+              href={`tel:${SITE.contact.phone}`}
+              className="inline-flex items-center justify-center rounded-md border border-card-border px-6 py-2.5 text-sm font-medium text-page-fg transition hover:bg-muted-surface"
+            >
+              {LABELS.callNow}
+            </a>
           </div>
 
-          {/* MAP */}
           <iframe
             src={`https://www.google.com/maps?q=${encodeURIComponent(
               SITE.address.line
             )}&output=embed`}
-            className="w-full h-[300px] rounded-lg border mt-6"
+            className="mt-6 h-[300px] w-full rounded-lg border border-card-border"
             loading="lazy"
+            title="Office location map"
           />
-
         </Container>
       </Section>
-
-    </main>
+    </div>
   );
 }

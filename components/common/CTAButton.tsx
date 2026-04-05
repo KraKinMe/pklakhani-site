@@ -37,22 +37,15 @@ export default function CTAButton({
   // Call
   if (type === "call" && phone) {
     return (
-      <a
-        href={`tel:${phone}`}
-        className={`text-sm text-gray-300 hover:text-white transition ${className}`}
-      >
+      <a href={`tel:${phone}`} className={`text-sm transition ${className}`}>
         {content}
       </a>
     );
   }
 
-  // Email
   if (type === "email" && email) {
     return (
-      <a
-        href={`mailto:${email}`}
-        className={`text-sm text-gray-300 hover:text-white transition ${className}`}
-      >
+      <a href={`mailto:${email}`} className={`text-sm transition ${className}`}>
         {content}
       </a>
     );

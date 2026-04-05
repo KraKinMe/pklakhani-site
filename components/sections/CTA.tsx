@@ -5,39 +5,34 @@ import Button from "@/components/ui/Button";
 import WhatsAppCTA from "@/components/common/WhatsAppCTA";
 import { CTA } from "@/config/cta";
 import { SITE } from "@/config/site";
+import { HOME_CTA_SECTION, LABELS } from "@/config/content";
 
 export default function CTASection() {
   return (
     <Section dark>
       <Container size="sm">
-        <div className="text-center max-w-2xl mx-auto">
-
+        <div className="mx-auto max-w-2xl text-center">
           <h2 className="heading heading-accent text-3xl md:text-4xl">
-            Need Assistance?
+            {HOME_CTA_SECTION.title}
           </h2>
 
-          <p className="mt-4 text-gray-300 leading-relaxed">
-            Connect with our team to discuss your requirements and get expert guidance.
+          <p className="mt-4 leading-relaxed text-zinc-300">
+            {HOME_CTA_SECTION.description}
           </p>
 
-          <div className="mt-8 flex justify-center items-center gap-4 flex-wrap">
-
-            {/* WhatsApp CTA */}
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
             <WhatsAppCTA
               {...CTA.general}
-              label="Talk to a Chartered Accountant"
+              label={HOME_CTA_SECTION.whatsappLabel}
             />
 
-            {/* Call CTA */}
             <Button
               href={`tel:${SITE.contact.phone}`}
               variant="secondary-dark"
             >
-              Call Now
+              {LABELS.callNow}
             </Button>
-
           </div>
-
         </div>
       </Container>
     </Section>

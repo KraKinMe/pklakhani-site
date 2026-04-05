@@ -1,133 +1,73 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./global.css";
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppCTA from "@/components/common/WhatsAppCTA";
+import { ThemeProvider } from "@/components/ThemeProvider";
 
-import { SITE } from "@/config/site";
+import { LAYOUT } from "@/config/content";
 import { CTA } from "@/config/cta";
+import { BRAND_COLORS } from "@/config/branding";
+import { rootSiteMetadata } from "@/config/seo";
+import { getSiteJsonLdGraph } from "@/config/schema";
 
-/* =========================
-   Fonts
-========================= */
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: "swap",
+  preload: true,
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: "swap",
+  preload: false,
 });
 
-/* =========================
-   Metadata (SEO)
-========================= */
-export const metadata: Metadata = {
-  metadataBase: new URL(SITE.baseUrl),
+export const metadata: Metadata = rootSiteMetadata;
 
-  title: {
-    default: `${SITE.name} | Chartered Accountants`,
-    template: `%s | ${SITE.name}`,
-  },
-
-  description:
-    "Chartered Accountants firm in Gurugram providing audit, taxation, GST and advisory services.",
-
-  keywords: [
-    "Chartered Accountant Gurugram",
-    "CA Firm India",
-    "Audit Services",
-    "GST Compliance",
-    "Tax Consultant",
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: BRAND_COLORS.primary },
   ],
-
-  openGraph: {
-    title: SITE.name,
-    description:
-      "Audit, taxation and advisory services for corporates and SMEs.",
-    url: SITE.baseUrl,
-    siteName: SITE.name,
-    locale: "en_IN",
-    type: "website",
-    images: [
-      {
-        url: `${SITE.baseUrl}/images/hero_ca.png`,
-        width: 1200,
-        height: 630,
-        alt: SITE.name,
-      },
-    ],
-  },
-
-  twitter: {
-    card: "summary_large_image",
-    title: SITE.name,
-    description:
-      "Audit, taxation and advisory services for corporates and SMEs.",
-    images: [`${SITE.baseUrl}/images/hero_ca.png`],
-  },
-
-  alternates: {
-    canonical: SITE.baseUrl,
-  },
+  width: "device-width",
+  initialScale: 1,
 };
 
-/* =========================
-   Layout
-========================= */
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "AccountingService",
-    name: SITE.name,
-    url: SITE.baseUrl,
-    telephone: SITE.contact.phone,
-    email: SITE.contact.email,
-    foundingDate: "1994",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: SITE.address.line,
-      addressLocality: "Gurugram",
-      addressRegion: "Haryana",
-      addressCountry: "IN",
-    },
-    areaServed: "India",
-    memberOf: {
-      "@type": "Organization",
-      name: "Institute of Chartered Accountants of India",
-    },
-  };
+  const structuredData = getSiteJsonLdGraph();
 
   return (
-    <html lang="en">
+    <html lang="en-IN" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-page-bg text-page-fg`}
       >
-        {/* SEO Structured Data */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(structuredData),
-          }}
-        />
+        <ThemeProvider>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(structuredData),
+            }}
+          />
 
-        <Navbar />
-        {children}
-        <Footer />
+          <Navbar />
+          <main id="main-content">{children}</main>
+          <Footer />
 
-        {/* Floating WhatsApp CTA */}
-        <WhatsAppCTA 
-          {...CTA.general} 
-          label="Chat with Us"
-          variant="floating" 
-        />
+          <WhatsAppCTA
+            {...CTA.general}
+            label={LAYOUT.floatingWhatsAppLabel}
+            variant="floating"
+          />
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -6,19 +6,18 @@ import Image from "next/image";
 import WhatsAppCTA from "@/components/common/WhatsAppCTA";
 import { CTA } from "@/config/cta";
 import { SITE } from "@/config/site";
-import { HERO } from "@/config/content";
+import { HERO, HOME_HERO, LABELS } from "@/config/content";
 
 export default function Hero() {
   return (
     <div className="relative overflow-hidden">
-
-      {/* Background */}
       <div className="absolute inset-0">
         <Image
-          src="/images/hero_ca.webp"
-          alt="Chartered Accountant Meeting"
+          src={HOME_HERO.imageSrc}
+          alt={HOME_HERO.imageAlt}
           fill
           priority
+          quality={82}
           sizes="100vw"
           className="object-cover"
         />
@@ -27,51 +26,43 @@ export default function Hero() {
 
       <Section dark>
         <div className="relative z-10 text-center text-white">
-
           <Container size="sm">
+            <p className="mb-4 text-sm text-gray-200">{SITE.taglineHero}</p>
 
-            <p className="text-sm text-gray-200 mb-4">
-              Chartered Accountants • Established 1994 • Gurugram
-            </p>
-
-            <h1 className="text-4xl md:text-5xl font-bold leading-tight">
-              Chartered Accountants for SMEs & Corporates
-              <span className="block text-[#C9A14A] mt-2">
-                Audit, Tax & Strategic Advisory
+            <h1 className="text-4xl font-bold leading-tight md:text-5xl">
+              {HOME_HERO.title}
+              <span className="mt-2 block text-[var(--brand-accent)]">
+                {HOME_HERO.accent}
               </span>
             </h1>
 
-            <p className="mt-6 text-lg text-gray-200 max-w-2xl mx-auto">
-              Enabling corporates and SMEs with expert statutory audit, taxation,
-              and regulatory compliance services.
+            <p className="mx-auto mt-6 max-w-2xl text-lg text-gray-200">
+              {HOME_HERO.description}
             </p>
 
-            <div className="mt-8 flex justify-center gap-4 flex-wrap">
-
+            <div className="mt-8 flex flex-wrap justify-center gap-4">
               <WhatsAppCTA {...CTA.consultation} />
 
               <Button
                 href={`tel:${SITE.contact.phone}`}
                 variant="secondary-dark"
               >
-                Call
+                {LABELS.call}
               </Button>
 
               <Button
                 href={`mailto:${SITE.contact.email}`}
                 variant="secondary-dark"
               >
-                Email
+                {LABELS.email}
               </Button>
-
             </div>
 
-            <div className="mt-8 flex justify-center gap-6 text-sm text-gray-200 flex-wrap font-semibold">
+            <div className="mt-8 flex flex-wrap justify-center gap-6 text-sm font-semibold text-gray-200">
               {HERO.highlights.map((item) => (
                 <span key={item.label}>{item.label}</span>
               ))}
             </div>
-
           </Container>
         </div>
       </Section>

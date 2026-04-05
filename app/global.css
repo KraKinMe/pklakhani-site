@@ -1,25 +1,105 @@
 @import "tailwindcss";
 
+/* Brand hex values: see config/branding.ts (keep in sync with --brand-* below). */
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Tailwind theme tokens (reference CSS variables that swap with .dark) */
+@theme inline {
+  --color-page-bg: var(--page-bg);
+  --color-page-fg: var(--page-fg);
+  --color-page-muted: var(--page-muted);
+  --color-card: var(--card-bg);
+  --color-card-border: var(--card-border);
+  --color-muted-surface: var(--muted-surface);
+  --color-nav-bg: var(--nav-bg);
+  --color-nav-fg: var(--nav-fg);
+  --color-nav-muted: var(--nav-muted);
+  --color-nav-border: var(--nav-border);
+  --color-nav-hover: var(--nav-hover);
+  --color-footer-bg: var(--footer-bg);
+  --color-footer-fg: var(--footer-fg);
+  --color-footer-muted: var(--footer-muted);
+  --color-footer-border: var(--footer-border);
+  --color-brand: var(--brand-primary);
+  --color-brand-accent: var(--brand-accent);
+}
+
 /* ================================
    BASE LAYER (FOUNDATION)
 ================================ */
 @layer base {
   :root {
-    --color-primary: #0B1F3A;
-    --color-accent: #C9A14A;
-    --color-text: #111827;
-    --color-muted: #6B7280;
-    --color-border: #D1D5DB;
     color-scheme: light;
+
+    --brand-primary: #0b1f3a;
+    --brand-accent: #c9a14a;
+
+    --page-bg: #ffffff;
+    --page-fg: #111827;
+    --page-muted: #6b7280;
+    --page-subtle: #9ca3af;
+    --card-bg: #ffffff;
+    --card-border: #e5e7eb;
+    --muted-surface: #f9fafb;
+
+    --nav-bg: #ffffff;
+    --nav-fg: #0b1f3a;
+    --nav-muted: #4b5563;
+    --nav-border: rgba(15, 23, 42, 0.1);
+    --nav-hover: rgba(15, 23, 42, 0.06);
+
+    --footer-bg: #f1f5f9;
+    --footer-fg: #0f172a;
+    --footer-muted: #64748b;
+    --footer-border: #e2e8f0;
+
+    /* Legacy names (used by section-dark, selection, headings) */
+    --color-primary: var(--brand-primary);
+    --color-accent: var(--brand-accent);
+    --color-text: var(--page-fg);
+    --color-muted: var(--page-muted);
+    --color-border: var(--card-border);
+  }
+
+  .dark {
+    color-scheme: dark;
+
+    --page-bg: #0f172a;
+    --page-fg: #f1f5f9;
+    --page-muted: #94a3b8;
+    --page-subtle: #64748b;
+    --card-bg: #1e293b;
+    --card-border: #334155;
+    --muted-surface: #1e293b;
+
+    --nav-bg: #0b1f3a;
+    --nav-fg: #ffffff;
+    --nav-muted: #cbd5e1;
+    --nav-border: rgba(255, 255, 255, 0.1);
+    --nav-hover: rgba(255, 255, 255, 0.08);
+
+    --footer-bg: #0b1f3a;
+    --footer-fg: #ffffff;
+    --footer-muted: #cbd5e1;
+    --footer-border: rgba(255, 255, 255, 0.1);
+
+    --color-text: var(--page-fg);
+    --color-muted: var(--page-muted);
+    --color-border: var(--card-border);
   }
 
   html {
     color-scheme: light;
   }
 
+  html.dark {
+    color-scheme: dark;
+  }
+
   body {
-    color: var(--color-text);
-    background: white;
+    color: var(--page-fg);
+    background: var(--page-bg);
   }
 
   ::selection {
@@ -28,28 +108,18 @@
   }
 }
 
-
 /* ================================
    COMPONENTS (REUSABLE UI)
 ================================ */
 @layer components {
-
-  /* ================================
-     TYPOGRAPHY
-  ================================= */
-
   .heading {
-    @apply font-semibold tracking-tight text-left;
+    @apply font-semibold tracking-tight text-left text-page-fg;
   }
 
   .subtext {
-    @apply text-gray-600 leading-relaxed;
+    color: var(--page-muted);
+    @apply leading-relaxed;
   }
-
-
-  /* ================================
-     BUTTONS
-  ================================= */
 
   .btn {
     @apply px-6 py-3 rounded-md text-sm transition flex items-center justify-center;
@@ -60,25 +130,49 @@
   }
 
   .btn-secondary {
-    @apply border border-gray-400 text-gray-800 hover:border-black hover:text-black;
+    border: 1px solid var(--card-border);
+    color: var(--page-fg);
+    @apply px-6 py-3 rounded-md text-sm transition flex items-center justify-center;
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--page-fg);
   }
 
   .btn-secondary-dark {
-    @apply border border-gray-500 text-gray-200 hover:border-white hover:text-white;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    color: #fff;
+    @apply px-6 py-3 rounded-md text-sm transition flex items-center justify-center;
   }
 
-
-  /* ================================
-     LAYOUT
-  ================================= */
+  .btn-secondary-dark:hover {
+    background: rgba(255, 255, 255, 0.08);
+  }
 
   .section {
     @apply py-24;
   }
 
   .section-dark {
-    background: var(--color-primary);
+    background: var(--brand-primary);
     color: white;
+  }
+
+  /*
+    On brand panels the background does not follow light/dark theme.
+    Force headings (and optional muted copy) to stay light-on-navy regardless of theme.
+  */
+  .section-dark .heading,
+  .section-dark .service-heading {
+    @apply text-white;
+  }
+
+  .section-dark .subtext {
+    color: rgba(255, 255, 255, 0.82);
+  }
+
+  .section-surface {
+    background: var(--page-bg);
   }
 
   .container {
@@ -89,11 +183,6 @@
     @apply max-w-4xl mx-auto px-6;
   }
 
-
-  /* ================================
-     GLOBAL ACCENT HEADING (CENTERED)
-  ================================= */
-
   .heading-accent {
     @apply relative inline-block mx-auto text-center;
   }
@@ -102,32 +191,22 @@
     content: "";
     @apply block w-12 h-[2px] mt-2;
     background: var(--color-accent);
-
-    /* Center underline */
     margin-left: auto;
     margin-right: auto;
   }
 
-  /* Optional helper for centered sections */
   .heading-accent-center {
     @apply text-center;
   }
 
-
-  /* ================================
-     SERVICE-SPECIFIC HEADING (LEFT)
-  ================================= */
-
   .service-heading {
-    @apply font-semibold tracking-tight text-left relative inline-block;
+    @apply font-semibold tracking-tight text-left relative inline-block text-page-fg;
   }
 
   .service-heading::after {
     content: "";
     @apply block w-12 h-[2px] mt-2;
     background: var(--color-accent);
-
-    /* Left underline */
     margin-left: 0;
     margin-right: auto;
   }
