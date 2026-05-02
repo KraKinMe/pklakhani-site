@@ -126,6 +126,50 @@ export const CAREERS = {
   whatsappButtonLabel: "Apply via WhatsApp",
 } as const;
 
+/** Homepage FAQ — mirrored in FAQPage JSON-LD for rich results eligibility. Keep answers factual. */
+export const FAQ_SECTION = {
+  title: "Frequently Asked Questions",
+  subtitle:
+    "Straight answers businesses often ask before working with our chartered accountants.",
+} as const;
+
+export const FAQ_HOME = [
+  {
+    question:
+      "What chartered accountancy services does P.K. Lakhani & Co. offer?",
+    answer:
+      "We provide statutory and internal audit, income tax planning and filings, GST registration and compliance, business advisory and structuring, outsourced bookkeeping, and payroll processing. Engagements are scoped to each client’s needs and applicable regulations.",
+  },
+  {
+    question:
+      "Do you work with small and mid-sized businesses, or only large companies?",
+    answer:
+      "We work with SMEs, growing companies, and larger corporates. We support organizations that need dependable compliance, audits, tax support, or ongoing accounting—whether you operate locally or across India.",
+  },
+  {
+    question: "Where is your CA firm located, and do you serve clients outside Gurugram?",
+    answer:
+      "Our office is in Gurugram, Haryana. We serve clients on a pan‑India basis for many engagements—including audit advisory, tax, and outsourced accounting—with communication over email, calls, and secure document sharing.",
+  },
+  {
+    question: "How can our business contact you for an initial consultation?",
+    answer:
+      "Reach us via phone, WhatsApp, or email from the contact section of this website, or click the WhatsApp button to share your requirement. Brief us on entity type (company, LLP, partnership, proprietor) and priorities (audit, GST, tax, bookkeeping), and our team will guide next steps.",
+  },
+  {
+    question:
+      "Can you help with GST registration, reconciliations, and return filing?",
+    answer:
+      "Yes. We support GST registration, periodic return filing, reconciliation with books and portal data, and related compliance hygiene. Complexity varies by industry and turnover, so timelines and deliverables are agreed at engagement.",
+  },
+  {
+    question:
+      "When might a company require a statutory auditor, and how do we know?",
+    answer:
+      "Applicable law (for example requirements under company law thresholds, entity type, and borrowings) determines whether a statutory audit is mandatory. Obligations depend on turnover, borrowing, shareholder structure, and other factors—we recommend confirming your classification with qualified advice rather than guessing from generic rules.",
+  },
+] as const;
+
 export const SERVICES = [
   {
     title: "Audit & Assurance",

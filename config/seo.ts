@@ -12,27 +12,36 @@ export function absoluteUrl(path: string): string {
 
 export const SEO_KEYWORDS = [
   "Chartered Accountant Gurugram",
-  "CA Firm India",
-  "Audit Services",
-  "GST Compliance",
-  "Tax Consultant",
+  "CA firm Gurugram",
+  "GST consultant Gurugram",
+  "Income tax consultant India",
+  "Statutory audit India",
+  "Internal audit services",
+  "Bookkeeping outsourcing India",
+  "Payroll processing India",
+  "Business advisory chartered accountant",
+  "Tax compliance SMEs",
+  "CA firm Sector 48 Gurugram",
+  "Corporate tax advisory",
 ] as const;
 
 const rootDescription =
-  "Chartered Accountants firm in Gurugram providing audit, taxation, GST and advisory services.";
+  "Gurugram CA firm established 1994: statutory audit, GST, income-tax filing, outsourced accounting & payroll, and structuring advice for SMEs and corporates—with pan‑India engagements.";
 
 const rootOgDescription =
-  "Audit, taxation and advisory services for corporates and SMEs.";
+  "Expert chartered accountants—audit, GST, tax and advisory—with an office on Sohna Road, Gurugram, serving trusted clients nationally.";
+
+const googleSiteVerification =
+  process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION?.trim();
 
 /**
- * Root layout metadata — single place to edit site-wide defaults.
- * Per-route titles/descriptions stay in `config/meta.ts` via `generateMeta`.
+ * Root layout metadata — site-wide defaults; per-route copy lives in `config/meta.ts`.
  */
 export const rootSiteMetadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
 
   title: {
-    default: `${SITE.name} | Chartered Accountants`,
+    default: `${SITE.name} | Chartered Accountants Gurugram`,
     template: `%s | ${SITE.name}`,
   },
 
@@ -41,12 +50,23 @@ export const rootSiteMetadata: Metadata = {
 
   applicationName: SITE.name,
 
+  authors: [{ name: SITE.name, url: getSiteUrl() }],
+
+  ...(googleSiteVerification
+    ? { verification: { google: googleSiteVerification } }
+    : {}),
+
   referrer: "strict-origin-when-cross-origin",
 
   formatDetection: {
     telephone: true,
     email: true,
     address: true,
+  },
+
+  other: {
+    "geo.region": "IN-HR",
+    "geo.placename": "Gurugram",
   },
 
   robots: {
@@ -62,7 +82,7 @@ export const rootSiteMetadata: Metadata = {
   },
 
   openGraph: {
-    title: SITE.name,
+    title: `${SITE.name} | Chartered Accountants & Tax Advisors`,
     description: rootOgDescription,
     url: getSiteUrl(),
     siteName: SITE.name,
@@ -73,7 +93,7 @@ export const rootSiteMetadata: Metadata = {
         url: absoluteUrl(OG_IMAGE_PATH),
         width: 1200,
         height: 630,
-        alt: SITE.name,
+        alt: `${SITE.name} — audit, taxation, GST and advisory in Gurugram`,
       },
     ],
   },

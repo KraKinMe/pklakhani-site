@@ -3,16 +3,24 @@ import Container from "@/components/ui/Container";
 
 import PageHero from "@/components/common/PageHero";
 import CTAButton from "@/components/common/CTAButton";
+import JsonLd from "@/components/seo/JsonLd";
 
 import { generateMeta } from "@/config/meta";
 import { CAREERS, PAGE_HERO } from "@/config/content";
 import { CTA } from "@/config/cta";
+import { getBreadcrumbListJsonLd } from "@/config/schema";
 
 export const metadata = generateMeta("careers");
 
 export default function CareersPage() {
   return (
     <div>
+      <JsonLd
+        data={getBreadcrumbListJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Careers", path: "/careers" },
+        ])}
+      />
       <PageHero {...PAGE_HERO.careers} />
 
       <Section>

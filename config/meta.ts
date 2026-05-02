@@ -2,68 +2,82 @@ import type { Metadata } from "next";
 import { SITE, getSiteUrl } from "./site";
 import { absoluteUrl, OG_IMAGE_PATH } from "./seo";
 
+/** `absoluteTitle` avoids the root layout template so SERP snippets stay concise (~50–62 chars typical). */
 export const META = {
   home: {
-    title: "Audit, Tax & Compliance Services",
+    absoluteTitle:
+      `${SITE.name} | CA Gurugram — Audit, GST & Tax Advisors`,
     description:
-      "Audit, taxation, GST and compliance services for corporates and SMEs across India.",
+      "CA firm since 1994 in Gurugram: statutory audit, GST, income tax, bookkeeping & payroll for SMEs & corporates. Pan‑India support—WhatsApp or call for a consultation.",
     path: "",
   },
 
   about: {
-    title: "About P.K. Lakhani & Co.",
+    absoluteTitle:
+      `About Us | ${SITE.name} — Gurugram Chartered Accountants`,
     description:
-      "Established in 1994, P.K. Lakhani & Co. is a Chartered Accountants firm based in Gurugram.",
+      "Learn about PK Lakhani & Co.—chartered accountants for corporates & SMEs since 1994: audits, taxation, outsourced accounting & compliance—with a Gurugram office and nationwide clients.",
     path: "/about",
   },
 
   services: {
-    title: "Our Services",
+    absoluteTitle:
+      `Audit & Tax Services | ${SITE.name} Gurugram`,
     description:
-      "Audit, GST, taxation and advisory services for corporates and SMEs.",
+      "Statutory & internal audits, GST & income-tax compliance, structuring advice, outsourced bookkeeping & payroll. Industry-aware delivery from Gurugram across India.",
     path: "/services",
   },
 
   contact: {
-    title: "Contact Us",
+    absoluteTitle:
+      `Contact PK Lakhani CA | Gurugram — Phone & WhatsApp`,
     description:
-      "Contact P.K. Lakhani & Co. for audit, taxation and compliance services in Gurugram.",
+      "Book a chartered accountant consultation: Gurugram CA office phone, WhatsApp & email enquiries for audit, taxation, payroll & statutory deadlines.",
     path: "/contact",
   },
 
   careers: {
-    title: "Careers",
+    absoluteTitle:
+      `Careers | ${SITE.name} — Audit & Tax Professionals`,
     description:
-      "Explore career opportunities in audit, taxation and advisory.",
+      "Build your career at a reputable CA firm—roles in audits, taxation, GST & advisory. Apply via WhatsApp or our online application form.",
     path: "/careers",
   },
 } as const;
 
 const ogImage = absoluteUrl(OG_IMAGE_PATH);
 
-/**
- * Per-route metadata (title, description, canonical, OG/Twitter).
- */
+const googleBot = {
+  index: true as const,
+  follow: true as const,
+  "max-image-preview": "large" as const,
+  "max-snippet": -1 as const,
+  "max-video-preview": -1 as const,
+};
+
+/** Per-route metadata (title [absolute], description, canonical, OG/Twitter). */
 export function generateMeta(key: keyof typeof META): Metadata {
   const meta = META[key];
-  const base = getSiteUrl();
+  const base = getSiteUrl().replace(/\/+$/, "");
   const url = `${base}${meta.path}`;
+  const pageTitle = meta.absoluteTitle;
 
   return {
-    title: meta.title,
+    title: {
+      absolute: pageTitle,
+    },
     description: meta.description,
-
+    authors: [{ name: SITE.name, url: base }],
     alternates: {
       canonical: url,
     },
-
     robots: {
       index: true,
       follow: true,
+      googleBot,
     },
-
     openGraph: {
-      title: meta.title,
+      title: pageTitle,
       description: meta.description,
       url,
       siteName: SITE.name,
@@ -74,14 +88,13 @@ export function generateMeta(key: keyof typeof META): Metadata {
           url: ogImage,
           width: 1200,
           height: 630,
-          alt: SITE.name,
+          alt: `${SITE.name} — audit, taxation and advisory Gurugram`,
         },
       ],
     },
-
     twitter: {
       card: "summary_large_image",
-      title: meta.title,
+      title: pageTitle,
       description: meta.description,
       images: [ogImage],
     },

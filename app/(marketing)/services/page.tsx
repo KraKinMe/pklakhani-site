@@ -4,6 +4,7 @@ import Container from "@/components/ui/Container";
 import PageHero from "@/components/common/PageHero";
 import CTAButton from "@/components/common/CTAButton";
 import WhatsAppCTA from "@/components/common/WhatsAppCTA";
+import JsonLd from "@/components/seo/JsonLd";
 
 import { generateMeta } from "@/config/meta";
 import {
@@ -15,6 +16,10 @@ import {
 } from "@/config/content";
 import { CTA } from "@/config/cta";
 import { SITE } from "@/config/site";
+import {
+  getBreadcrumbListJsonLd,
+  getServicesItemListJsonLd,
+} from "@/config/schema";
 
 import type { LucideIcon } from "lucide-react";
 import {
@@ -29,7 +34,6 @@ import {
 
 export const metadata = generateMeta("services");
 
-// ✅ toggle alternation
 const ENABLE_ALTERNATE = false;
 
 // service icons
@@ -49,8 +53,14 @@ const STAT_ICON_MAP: Record<string, LucideIcon> = {
 export default function ServicesPage() {
   return (
     <div>
+      <JsonLd
+        data={getBreadcrumbListJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Services", path: "/services" },
+        ])}
+      />
+      <JsonLd data={getServicesItemListJsonLd()} />
 
-      {/* HERO */}
       <PageHero {...PAGE_HERO.services} />
 
       {/* SERVICES */}

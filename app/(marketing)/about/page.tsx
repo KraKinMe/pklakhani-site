@@ -1,15 +1,23 @@
 import Section from "@/components/ui/Section";
 import Container from "@/components/ui/Container";
 import PageHero from "@/components/common/PageHero";
+import JsonLd from "@/components/seo/JsonLd";
 
 import { generateMeta } from "@/config/meta";
 import { ABOUT, PAGE_HERO } from "@/config/content";
+import { getBreadcrumbListJsonLd } from "@/config/schema";
 
 export const metadata = generateMeta("about");
 
 export default function AboutPage() {
   return (
     <div>
+      <JsonLd
+        data={getBreadcrumbListJsonLd([
+          { name: "Home", path: "/" },
+          { name: "About us", path: "/about" },
+        ])}
+      />
       <PageHero {...PAGE_HERO.about} />
 
       <Section>

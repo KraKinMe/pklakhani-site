@@ -3,17 +3,25 @@ import Container from "@/components/ui/Container";
 
 import PageHero from "@/components/common/PageHero";
 import CTAButton from "@/components/common/CTAButton";
+import JsonLd from "@/components/seo/JsonLd";
 
 import { generateMeta } from "@/config/meta";
 import { CONTACT_PAGE, LABELS, PAGE_HERO } from "@/config/content";
 import { SITE } from "@/config/site";
 import { CTA } from "@/config/cta";
+import { getBreadcrumbListJsonLd } from "@/config/schema";
 
 export const metadata = generateMeta("contact");
 
 export default function ContactPage() {
   return (
     <div>
+      <JsonLd
+        data={getBreadcrumbListJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Contact", path: "/contact" },
+        ])}
+      />
       <PageHero {...PAGE_HERO.contact} position="top" />
 
       <Section>

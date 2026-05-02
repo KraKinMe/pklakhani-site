@@ -10,7 +10,12 @@ export {
   SEO_KEYWORDS,
 } from "./seo";
 export { generateMeta, META } from "./meta";
-export { getSiteJsonLdGraph } from "./schema";
+export {
+  getSiteJsonLdGraph,
+  getFaqPageJsonLd,
+  getBreadcrumbListJsonLd,
+  getServicesItemListJsonLd,
+} from "./schema";
 export { BRAND_COLORS } from "./branding";
 export { CTA } from "./cta";
 export { NAVIGATION } from "./navigation";
