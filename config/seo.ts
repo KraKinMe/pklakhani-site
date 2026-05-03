@@ -26,7 +26,7 @@ const SEO_KEYWORDS = [
 ] as const;
 
 const rootDescription =
-  "Leading Chartered Accountant in Gurugram offering expert GST Audit, Tax Advisors, and statutory compliance for SMEs and corporates across India.";
+  "Leading Chartered Accountant in Gurugram offering expert GST Audit, Tax Advisors, and statutory compliance for SMEs & corporates.";
 
 const rootOgDescription =
   "Expert chartered accountants—audit, GST, tax and advisory—with an office on Sohna Road, Gurugram, serving trusted clients nationally.";

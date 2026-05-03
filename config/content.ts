@@ -17,7 +17,7 @@ export const HOME_HERO = {
   title: "Chartered Accountants for SMEs & Corporates",
   accent: "Audit, Tax & Strategic Advisory",
   description:
-    "Enabling corporates and SMEs with expert statutory audit, taxation, and regulatory compliance services.",
+    "As leading Chartered Accountants for SMEs & Corporates, we enable businesses with expert statutory audit, taxation, and regulatory compliance services.",
 } as const;
 
 export const HERO = {

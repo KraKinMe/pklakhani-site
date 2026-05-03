@@ -1,5 +1,5 @@
 /** Default public URL when `NEXT_PUBLIC_SITE_URL` is not set (e.g. local dev). */
-const DEFAULT_SITE_URL = "https://pklakhani.com";
+const DEFAULT_SITE_URL = "https://www.pklakhani.com";
 
 /**
  * Canonical site origin for metadata, OG URLs, JSON-LD, and sitemaps.
@@ -34,7 +34,7 @@ export const SITE = {
 
   contact: {
     phone: "+91 9811115617",
-    email: "pradeep.lakhani@gmail.com",
+    email: "info@pklakhani.com",
     whatsapp: "918802805667",
   },
 
