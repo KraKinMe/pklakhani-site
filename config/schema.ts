@@ -133,7 +133,7 @@ export function getSiteJsonLdGraph() {
         },
       },
       {
-        "@type": "AccountingService",
+        "@type": ["AccountingService", "LocalBusiness"],
         "@id": `${base}/#accounting-service`,
         name: SITE.name,
         url: base,

@@ -43,7 +43,7 @@ export default function WhatsAppCTA({
       {showIcon && (
         <Image
           src="/icons/whatsapp.svg"
-          alt="WhatsApp"
+          alt="Chat with P.K. Lakhani & Co. on WhatsApp for Tax and Audit queries"
           width={variant === "floating" ? 20 : 16}
           height={variant === "floating" ? 20 : 16}
         />

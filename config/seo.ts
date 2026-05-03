@@ -10,7 +10,7 @@ export function absoluteUrl(path: string): string {
   return `${base}${normalized}`;
 }
 
-export const SEO_KEYWORDS = [
+const SEO_KEYWORDS = [
   "Chartered Accountant Gurugram",
   "CA firm Gurugram",
   "GST consultant Gurugram",
@@ -26,7 +26,7 @@ export const SEO_KEYWORDS = [
 ] as const;
 
 const rootDescription =
-  "Gurugram CA firm established 1994: statutory audit, GST, income-tax filing, outsourced accounting & payroll, and structuring advice for SMEs and corporates—with pan‑India engagements.";
+  "Leading Chartered Accountant in Gurugram offering expert GST Audit, Tax Advisors, and statutory compliance for SMEs and corporates across India.";
 
 const rootOgDescription =
   "Expert chartered accountants—audit, GST, tax and advisory—with an office on Sohna Road, Gurugram, serving trusted clients nationally.";

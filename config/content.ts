@@ -13,7 +13,7 @@ export const LABELS = {
 
 export const HOME_HERO = {
   imageSrc: "/images/hero_ca.webp",
-  imageAlt: "Chartered Accountant Meeting",
+  imageAlt: "Chartered Accountants in Gurugram discussing Audit and Tax Compliance",
   title: "Chartered Accountants for SMEs & Corporates",
   accent: "Audit, Tax & Strategic Advisory",
   description:
@@ -29,7 +29,7 @@ export const HERO = {
 };
 
 export const INDUSTRIES_SECTION = {
-  title: "Industries We Serve",
+  title: "Industries We Serve: Statutory Audit & Compliance in Gurugram",
   description:
     "We work with businesses across diverse sectors, providing tailored audit, taxation, and advisory solutions aligned with industry-specific requirements.",
 } as const;
@@ -47,7 +47,7 @@ export const INDUSTRIES = [
 ];
 
 export const SERVICES_SECTION = {
-  title: "Our Core Services",
+  title: "Our Core Services: Statutory Audit & Compliance in Gurugram",
   description:
     "Comprehensive audit, taxation, and advisory solutions designed to ensure compliance, optimize financial performance, and support business growth.",
 };
@@ -67,7 +67,7 @@ export const SERVICES_PAGE_CTA = {
 
 export const ABOUT = {
   firm: {
-    title: "Our Firm",
+    title: "Our Firm: Tax Advisors & Statutory Audit in Gurugram",
     paragraphs: [
       "With over three decades of experience, we provide audit, taxation, and advisory services to corporates and SMEs.",
       "Our approach focuses on compliance, accuracy, and timely execution of financial and regulatory requirements while supporting long-term business growth.",
@@ -128,7 +128,7 @@ export const CAREERS = {
 
 /** Homepage FAQ — mirrored in FAQPage JSON-LD for rich results eligibility. Keep answers factual. */
 export const FAQ_SECTION = {
-  title: "Frequently Asked Questions",
+  title: "Frequently Asked Questions on Tax & Compliance",
   subtitle:
     "Straight answers businesses often ask before working with our chartered accountants.",
 } as const;

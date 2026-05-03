@@ -53,9 +53,13 @@ export default function CTAButton({
   if (type === "email" && email) {
     return (
       <a 
-        href={`mailto:${email}`} 
+        href="#"
         className={`text-sm transition ${className}`}
-        onClick={() => sendGAEvent("event", "contact_click", { method: "email", label })}
+        onClick={(e) => {
+          e.preventDefault();
+          window.location.href = `mailto:${email}`;
+          sendGAEvent("event", "contact_click", { method: "email", label });
+        }}
       >
         {content}
       </a>

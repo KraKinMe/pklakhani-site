@@ -19,16 +19,20 @@ export default function Button({
     "secondary-dark": "btn btn-secondary-dark",
   };
 
-  const handleClick = () => {
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (href.startsWith("tel:")) {
       sendGAEvent("event", "contact_click", { method: "phone" });
     } else if (href.startsWith("mailto:")) {
+      e.preventDefault();
+      window.location.href = href;
       sendGAEvent("event", "contact_click", { method: "email" });
     }
   };
 
+  const displayHref = href.startsWith("mailto:") ? "#" : href;
+
   return (
-    <a href={href} target={target} className={styles[variant]} onClick={handleClick}>
+    <a href={displayHref} target={target} className={styles[variant]} onClick={handleClick}>
       {children}
     </a>
   );

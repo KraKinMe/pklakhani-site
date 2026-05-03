@@ -3,7 +3,7 @@ import { SITE, getSiteUrl } from "./site";
 import { absoluteUrl, OG_IMAGE_PATH } from "./seo";
 
 /** `absoluteTitle` avoids the root layout template so SERP snippets stay concise (~50–62 chars typical). */
-export const META = {
+const META = {
   home: {
     absoluteTitle:
       `${SITE.name} | CA Gurugram — Audit, GST & Tax Advisors`,
