@@ -138,35 +138,29 @@ export const FAQ_HOME = [
     question:
       "What chartered accountancy services does P.K. Lakhani & Co. offer?",
     answer:
-      "We provide statutory and internal audit, income tax planning and filings, GST registration and compliance, business advisory and structuring, outsourced bookkeeping, and payroll processing. Engagements are scoped to each client’s needs and applicable regulations.",
+      "We offer a wide range of services including statutory and internal audits, income tax planning and filing, and complete GST compliance. We also handle business advisory, bookkeeping, and payroll processing. We'll work closely with you to figure out exactly what your business needs.",
   },
   {
     question:
       "Do you work with small and mid-sized businesses, or only large companies?",
     answer:
-      "We work with SMEs, growing companies, and larger corporates. We support organizations that need dependable compliance, audits, tax support, or ongoing accounting—whether you operate locally or across India.",
+      "We work with businesses of all sizes! Whether you're a growing startup, an established SME, or a large corporation, we can help. We provide reliable auditing, tax support, and ongoing accounting services to clients locally and across India.",
   },
   {
     question: "Where is your CA firm located, and do you serve clients outside Gurugram?",
     answer:
-      "Our office is in Gurugram, Haryana. We serve clients on a pan‑India basis for many engagements—including audit advisory, tax, and outsourced accounting—with communication over email, calls, and secure document sharing.",
+      "Our main office is based in Gurugram, Haryana, but we work with clients all over India. We handle many of our services like tax, audits, and accounting entirely online through secure document sharing, emails, and calls.",
   },
   {
     question: "How can our business contact you for an initial consultation?",
     answer:
-      "Reach us via phone, WhatsApp, or email from the contact section of this website, or click the WhatsApp button to share your requirement. Brief us on entity type (company, LLP, partnership, proprietor) and priorities (audit, GST, tax, bookkeeping), and our team will guide next steps.",
+      "You can easily reach out to us by phone, email, or just by clicking the WhatsApp button on our website. Just let us know a little bit about your business and what kind of help you're looking for (like tax filing, audits, or bookkeeping), and our team will take it from there.",
   },
   {
     question:
       "Can you help with GST registration, reconciliations, and return filing?",
     answer:
-      "Yes. We support GST registration, periodic return filing, reconciliation with books and portal data, and related compliance hygiene. Complexity varies by industry and turnover, so timelines and deliverables are agreed at engagement.",
-  },
-  {
-    question:
-      "When might a company require a statutory auditor, and how do we know?",
-    answer:
-      "Applicable law (for example requirements under company law thresholds, entity type, and borrowings) determines whether a statutory audit is mandatory. Obligations depend on turnover, borrowing, shareholder structure, and other factors—we recommend confirming your classification with qualified advice rather than guessing from generic rules.",
+      "Yes, absolutely. We can handle your entire GST process, from initial registration to filing your regular returns and reconciling your data. We make sure everything is compliant and filed on time, so you don't have to worry about it.",
   },
 ] as const;
 

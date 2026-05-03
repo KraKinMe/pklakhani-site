@@ -1,7 +1,10 @@
+"use client";
+
 // components/common/WhatsAppCTA.tsx
 
 import Image from "next/image";
 import { getWhatsAppLink } from "@/utils/whatsapp";
+import { sendGAEvent } from "@next/third-parties/google";
 
 type Props = {
   message: string;
@@ -35,6 +38,7 @@ export default function WhatsAppCTA({
       target="_blank"
       rel="noopener noreferrer"
       className={`${styles[variant]} ${className} flex items-center gap-2`}
+      onClick={() => sendGAEvent("event", "contact_click", { method: "whatsapp", label })}
     >
       {showIcon && (
         <Image

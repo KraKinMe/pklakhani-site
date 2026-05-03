@@ -1,4 +1,7 @@
+"use client";
+
 import WhatsAppCTA from "./WhatsAppCTA";
+import { sendGAEvent } from "@next/third-parties/google";
 
 type Props = {
   type: "whatsapp" | "call" | "email";
@@ -37,7 +40,11 @@ export default function CTAButton({
   // Call
   if (type === "call" && phone) {
     return (
-      <a href={`tel:${phone}`} className={`text-sm transition ${className}`}>
+      <a 
+        href={`tel:${phone}`} 
+        className={`text-sm transition ${className}`}
+        onClick={() => sendGAEvent("event", "contact_click", { method: "phone", label })}
+      >
         {content}
       </a>
     );
@@ -45,7 +52,11 @@ export default function CTAButton({
 
   if (type === "email" && email) {
     return (
-      <a href={`mailto:${email}`} className={`text-sm transition ${className}`}>
+      <a 
+        href={`mailto:${email}`} 
+        className={`text-sm transition ${className}`}
+        onClick={() => sendGAEvent("event", "contact_click", { method: "email", label })}
+      >
         {content}
       </a>
     );

@@ -1,3 +1,7 @@
+"use client";
+
+import { sendGAEvent } from "@next/third-parties/google";
+
 export default function Button({
   children,
   href,
@@ -15,8 +19,16 @@ export default function Button({
     "secondary-dark": "btn btn-secondary-dark",
   };
 
+  const handleClick = () => {
+    if (href.startsWith("tel:")) {
+      sendGAEvent("event", "contact_click", { method: "phone" });
+    } else if (href.startsWith("mailto:")) {
+      sendGAEvent("event", "contact_click", { method: "email" });
+    }
+  };
+
   return (
-    <a href={href} target={target} className={styles[variant]}>
+    <a href={href} target={target} className={styles[variant]} onClick={handleClick}>
       {children}
     </a>
   );
