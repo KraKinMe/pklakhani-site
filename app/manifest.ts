@@ -8,7 +8,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: SITE.name,
     short_name: "P.K. Lakhani & Co.",
     description:
-      "Chartered Accountants in Gurugram — audit, taxation, GST and advisory for SMEs and corporates.",
+      "Chartered Accountants in Gurugram & Delhi NCR — audit, taxation, GST and advisory for SMEs and corporates.",
     start_url: "/",
     display: "browser",
     background_color: "#ffffff",

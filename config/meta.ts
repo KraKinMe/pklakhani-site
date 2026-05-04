@@ -6,41 +6,41 @@ import { absoluteUrl, OG_IMAGE_PATH } from "./seo";
 const META = {
   home: {
     absoluteTitle:
-      `${SITE.name} | CA Gurugram — Audit, GST & Tax Advisors`,
+      `${SITE.name} | CA in Gurugram & Delhi NCR — Audit, GST & Tax`,
     description:
-      "CA firm since 1994 in Gurugram: statutory audit, GST, income tax, bookkeeping & payroll for SMEs & corporates. Pan‑India support—WhatsApp or call for a consultation.",
+      "CA firm since 1994 in Gurugram & Delhi NCR: statutory audit, GST, income tax, bookkeeping & payroll for SMEs & corporates. Pan‑India support—WhatsApp or call us.",
     path: "",
   },
 
   about: {
     absoluteTitle:
-      `About Us | ${SITE.name} — Gurugram Chartered Accountants`,
+      `About Us | ${SITE.name} — Gurugram & Delhi NCR Chartered Accountants`,
     description:
-      "Learn about PK Lakhani & Co.—chartered accountants for corporates & SMEs since 1994: audits, taxation, outsourced accounting & compliance—with a Gurugram office and nationwide clients.",
+      "Learn about PK Lakhani & Co.—chartered accountants for corporates & SMEs since 1994: audits, taxation, outsourced accounting & compliance—serving Gurugram, Delhi NCR and nationwide.",
     path: "/about",
   },
 
   services: {
     absoluteTitle:
-      `Audit & Tax Services | ${SITE.name} Gurugram`,
+      `Audit & Tax Services | ${SITE.name} Gurugram & Delhi NCR`,
     description:
-      "Statutory & internal audits, GST & income-tax compliance, structuring advice, outsourced bookkeeping & payroll. Industry-aware delivery from Gurugram across India.",
+      "Statutory & internal audits, GST & income-tax compliance, structuring advice, outsourced bookkeeping & payroll. Industry-aware delivery across Gurugram, Delhi NCR and India.",
     path: "/services",
   },
 
   contact: {
     absoluteTitle:
-      `Contact PK Lakhani CA | Gurugram — Phone & WhatsApp`,
+      `Contact PK Lakhani CA | Gurugram & Delhi NCR`,
     description:
-      "Book a chartered accountant consultation: Gurugram CA office phone, WhatsApp & email enquiries for audit, taxation, payroll & statutory deadlines.",
+      "Book a chartered accountant consultation in Gurugram and Delhi NCR: Phone, WhatsApp & email enquiries for audit, taxation, payroll & statutory deadlines.",
     path: "/contact",
   },
 
   careers: {
     absoluteTitle:
-      `Careers | ${SITE.name} — Audit & Tax Professionals`,
+      `Careers | ${SITE.name} — Audit & Tax Professionals in Gurugram`,
     description:
-      "Build your career at a reputable CA firm—roles in audits, taxation, GST & advisory. Apply via WhatsApp or our online application form.",
+      "Build your career at a reputable Gurugram CA firm—roles in audits, taxation, GST & advisory. Apply via WhatsApp or our online application form.",
     path: "/careers",
   },
 } as const;

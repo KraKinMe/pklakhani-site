@@ -104,13 +104,15 @@ export function getSiteJsonLdGraph() {
         email: SITE.contact.email,
         foundingDate: SITE.schema.foundingYear,
         address: postalAddress(),
-        areaServed: SITE.schema.areaServed,
+        areaServed: ["Gurugram", "Delhi NCR", "India"],
         memberOf: {
           "@type": "Organization",
           name: SITE.schema.professionalBody,
         },
         hasOfferCatalog: catalogFromServices(base),
         knowsAbout: [
+          "Chartered Accountant Delhi NCR",
+          "CA in Gurugram",
           "Statutory audit India",
           "Income tax advisory",
           "GST compliance India",
@@ -141,7 +143,7 @@ export function getSiteJsonLdGraph() {
         email: SITE.contact.email,
         foundingDate: SITE.schema.foundingYear,
         address: postalAddress(),
-        areaServed: SITE.schema.areaServed,
+        areaServed: ["Gurugram", "Delhi NCR", "India"],
         memberOf: {
           "@type": "Organization",
           name: SITE.schema.professionalBody,

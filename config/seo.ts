@@ -13,6 +13,11 @@ export function absoluteUrl(path: string): string {
 const SEO_KEYWORDS = [
   "Chartered Accountant Gurugram",
   "CA firm Gurugram",
+  "CA in Delhi NCR",
+  "Chartered Accountant Delhi NCR",
+  "CA firm Delhi NCR",
+  "Top CA Delhi NCR",
+  "Best CA in Gurgaon",
   "GST consultant Gurugram",
   "Income tax consultant India",
   "Statutory audit India",
@@ -26,10 +31,10 @@ const SEO_KEYWORDS = [
 ] as const;
 
 const rootDescription =
-  "Leading Chartered Accountant in Gurugram offering expert GST Audit, Tax Advisors, and statutory compliance for SMEs & corporates.";
+  "Leading Chartered Accountant in Gurugram & Delhi NCR offering expert GST Audit, Tax Advisors, and statutory compliance for SMEs & corporates.";
 
 const rootOgDescription =
-  "Expert chartered accountants—audit, GST, tax and advisory—with an office on Sohna Road, Gurugram, serving trusted clients nationally.";
+  "Expert chartered accountants—audit, GST, tax and advisory—with an office on Sohna Road, Gurugram, serving trusted clients across Delhi NCR and nationally.";
 
 const googleSiteVerification =
   process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION?.trim();
