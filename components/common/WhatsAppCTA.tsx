@@ -34,11 +34,10 @@ export default function WhatsAppCTA({
 
   return (
     <a
-      href={getWhatsAppLink(message)}
+      href={`/api/track?method=whatsapp&label=${encodeURIComponent(label)}&dest=${encodeURIComponent(getWhatsAppLink(message))}`}
       target="_blank"
       rel="noopener noreferrer"
       className={`${styles[variant]} ${className} flex items-center gap-2`}
-      onClick={() => sendGAEvent("event", "contact_click", { method: "whatsapp", label })}
     >
       {showIcon && (
         <Image

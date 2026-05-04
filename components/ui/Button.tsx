@@ -19,20 +19,17 @@ export default function Button({
     "secondary-dark": "btn btn-secondary-dark",
   };
 
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    if (href.startsWith("tel:")) {
-      sendGAEvent("event", "contact_click", { method: "phone" });
-    } else if (href.startsWith("mailto:")) {
-      e.preventDefault();
-      window.location.href = href;
-      sendGAEvent("event", "contact_click", { method: "email" });
-    }
-  };
-
-  const displayHref = href.startsWith("mailto:") ? "#" : href;
+  let method = "unknown";
+  if (href.startsWith("tel:")) method = "phone";
+  else if (href.startsWith("mailto:")) method = "email";
+  
+  const isTrackingNeeded = method !== "unknown";
+  const displayHref = isTrackingNeeded
+    ? `/api/track?method=${method}&dest=${encodeURIComponent(href)}`
+    : href;
 
   return (
-    <a href={displayHref} target={target} className={styles[variant]} onClick={handleClick}>
+    <a href={displayHref} target={target} className={styles[variant]}>
       {children}
     </a>
   );

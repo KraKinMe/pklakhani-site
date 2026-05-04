@@ -41,9 +41,8 @@ export default function CTAButton({
   if (type === "call" && phone) {
     return (
       <a 
-        href={`tel:${phone}`} 
+        href={`/api/track?method=phone&label=${encodeURIComponent(label || "")}&dest=${encodeURIComponent(`tel:${phone}`)}`} 
         className={`text-sm transition ${className}`}
-        onClick={() => sendGAEvent("event", "contact_click", { method: "phone", label })}
       >
         {content}
       </a>
@@ -53,13 +52,8 @@ export default function CTAButton({
   if (type === "email" && email) {
     return (
       <a 
-        href="#"
+        href={`/api/track?method=email&label=${encodeURIComponent(label || "")}&dest=${encodeURIComponent(`mailto:${email}`)}`}
         className={`text-sm transition ${className}`}
-        onClick={(e) => {
-          e.preventDefault();
-          window.location.href = `mailto:${email}`;
-          sendGAEvent("event", "contact_click", { method: "email", label });
-        }}
       >
         {content}
       </a>
