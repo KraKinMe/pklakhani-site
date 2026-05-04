@@ -22,10 +22,11 @@ export default function Button({
   let method = "unknown";
   if (href.startsWith("tel:")) method = "phone";
   else if (href.startsWith("mailto:")) method = "email";
-  
+
+  const textLabel = typeof children === "string" ? children : "";
   const isTrackingNeeded = method !== "unknown";
   const displayHref = isTrackingNeeded
-    ? `/api/track?method=${method}&dest=${encodeURIComponent(href)}`
+    ? `/api/track?method=${method}&label=${encodeURIComponent(textLabel)}&dest=${encodeURIComponent(href)}`
     : href;
 
   return (

@@ -17,7 +17,6 @@ export default function Hero() {
           alt={HOME_HERO.imageAlt}
           fill
           priority
-          quality={82}
           sizes="100vw"
           className="object-cover"
         />

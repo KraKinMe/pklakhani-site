@@ -108,6 +108,8 @@ export default function Navbar() {
                 type="button"
                 onClick={() => setOpen(!open)}
                 className="rounded-md p-2 text-nav-fg transition hover:bg-nav-hover md:hidden"
+                aria-label="Toggle mobile menu"
+                aria-expanded={open}
               >
                 {open ? <X size={28} /> : <Menu size={28} />}
               </button>
@@ -128,6 +130,7 @@ export default function Navbar() {
         className={`fixed top-0 right-0 z-50 h-full w-[80%] max-w-sm transform border-l border-nav-border bg-nav-bg shadow-2xl transition-transform duration-300 md:hidden ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
+        aria-hidden={!open}
       >
         <div className="space-y-8 p-6">
           <div className="flex justify-end">
@@ -135,6 +138,7 @@ export default function Navbar() {
               type="button"
               onClick={() => setOpen(false)}
               className="rounded-md p-2 text-nav-fg transition hover:bg-nav-hover"
+              aria-label="Close mobile menu"
             >
               <X size={26} />
             </button>
