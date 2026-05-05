@@ -4,7 +4,6 @@
 
 import Image from "next/image";
 import { getWhatsAppLink } from "@/utils/whatsapp";
-import { sendGAEvent } from "@next/third-parties/google";
 
 type Props = {
   message: string;

@@ -1,7 +1,6 @@
 "use client";
 
 import WhatsAppCTA from "./WhatsAppCTA";
-import { sendGAEvent } from "@next/third-parties/google";
 
 type Props = {
   type: "whatsapp" | "call" | "email";
