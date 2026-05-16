@@ -34,7 +34,7 @@ export const SITE = {
 
   contact: {
     phone: "+91 9811115617",
-    email: "pradeep.lakhani@gmail.com",
+    email: "contact@pklakhani.com",
     whatsapp: "918802805667",
   },
 
