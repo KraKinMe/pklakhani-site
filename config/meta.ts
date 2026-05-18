@@ -8,7 +8,7 @@ const META = {
     absoluteTitle:
       `${SITE.name} | CA in Gurugram & Delhi NCR — Audit, GST & Tax`,
     description:
-      "CA firm since 1994 in Gurugram & Delhi NCR: statutory audit, GST, income tax, bookkeeping & payroll for SMEs & corporates. Pan‑India support—WhatsApp or call us.",
+      "CA firm since 1994 in Gurugram & Delhi NCR: expert statutory audit, GST, tax, bookkeeping & payroll for SMEs. Call or WhatsApp our team.",
     path: "",
   },
 
