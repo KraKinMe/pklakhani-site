@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 
 import { getSiteUrl } from "@/config/site";
 import { NAVIGATION } from "@/config/navigation";
-import connectToDatabase from "@/lib/db";
+import connectToDatabase, { isDatabaseConfigured } from "@/lib/db";
 import Blog from "@/models/Blog";
 
 /** Tune crawl hints per path (relative to site root). */
@@ -54,6 +54,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Fetch active blogs from database
   let blogPages: MetadataRoute.Sitemap = [];
   try {
+    if (!isDatabaseConfigured()) {
+      return [...staticPages, ...blogPages];
+    }
     await connectToDatabase();
     const blogs = await Blog.find({
       isPublished: true,

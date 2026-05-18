@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { notFound, permanentRedirect } from "next/navigation";
 import Link from "next/link";
-import connectToDatabase from "@/lib/db";
+import connectToDatabase, { isDatabaseConfigured } from "@/lib/db";
 import Blog from "@/models/Blog";
 import { Calendar } from "lucide-react";
 import WhatsAppCTA from "@/components/common/WhatsAppCTA";
@@ -19,7 +19,16 @@ import "react-quill-new/dist/quill.snow.css";
 export const revalidate = 3600;
 
 async function getBlog(slug: string) {
-  await connectToDatabase();
+  if (!isDatabaseConfigured()) {
+    return null;
+  }
+
+  try {
+    await connectToDatabase();
+  } catch (error) {
+    console.error("Failed to connect to database:", error);
+    return null;
+  }
 
   const publishedFilter = getPublishedBlogFilter();
   let blog = await Blog.findOne({ ...publishedFilter, slug }).lean();

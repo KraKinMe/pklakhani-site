@@ -13,7 +13,7 @@ function escapeXml(value: string): string {
 
 export async function GET() {
   const siteUrl = getSiteUrl().replace(/\/+$/, "");
-  const blogs = await getPublishedBlogs(50);
+  const blogs = await getPublishedBlogs({ limit: 50 });
   const categoryMap = await getCategoryMap();
 
   const items = blogs

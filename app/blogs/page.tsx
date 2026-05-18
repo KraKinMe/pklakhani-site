@@ -1,9 +1,7 @@
 import Link from "next/link";
-import connectToDatabase from "@/lib/db";
-import Blog from "@/models/Blog";
 import { ArrowRight, Calendar } from "lucide-react";
 import { generateMeta } from "@/config/meta";
-import { getPublishedBlogFilter } from "@/lib/blogs";
+import { getPublishedBlogs } from "@/lib/blogs";
 import { getPublicCategories, getCategoryMap } from "@/lib/categories-public";
 import Breadcrumbs from "@/components/blogs/Breadcrumbs";
 import BlogCoverImage from "@/components/blogs/BlogCoverImage";
@@ -22,24 +20,6 @@ function formatDate(iso: string) {
   }).format(new Date(iso));
 }
 
-async function getBlogs(categorySlug?: string) {
-  await connectToDatabase();
-
-  const filter: Record<string, unknown> = { ...getPublishedBlogFilter() };
-  if (categorySlug) {
-    filter.category = categorySlug;
-  }
-
-  const blogs = await Blog.find(filter).sort({ createdAt: -1 }).lean();
-
-  return blogs.map((blog) => ({
-    ...blog,
-    _id: blog._id.toString(),
-    createdAt: blog.createdAt.toISOString(),
-    updatedAt: blog.updatedAt.toISOString(),
-  }));
-}
-
 export default async function BlogListPage({
   searchParams,
 }: {
@@ -47,7 +27,7 @@ export default async function BlogListPage({
 }) {
   const { category: categorySlug } = await searchParams;
   const [blogs, categories, categoryMap] = await Promise.all([
-    getBlogs(categorySlug),
+    getPublishedBlogs({ categorySlug }),
     getPublicCategories(),
     getCategoryMap(),
   ]);

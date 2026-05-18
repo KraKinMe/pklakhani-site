@@ -1,4 +1,4 @@
-import connectToDatabase from "@/lib/db";
+import connectToDatabase, { isDatabaseConfigured } from "@/lib/db";
 import Blog from "@/models/Blog";
 
 export function getPublishedBlogFilter() {
@@ -8,23 +8,40 @@ export function getPublishedBlogFilter() {
   };
 }
 
-export async function getPublishedBlogs(limit?: number) {
-  await connectToDatabase();
-  let query = Blog.find(getPublishedBlogFilter())
-    .sort({ createdAt: -1 })
-    .lean();
-  if (limit) {
-    query = query.limit(limit);
+export async function getPublishedBlogs(options?: {
+  limit?: number;
+  categorySlug?: string;
+}) {
+  if (!isDatabaseConfigured()) {
+    return [];
   }
-  const blogs = await query;
-  return blogs.map((blog) => ({
-    ...blog,
-    _id: blog._id.toString(),
-    createdAt: blog.createdAt.toISOString(),
-    updatedAt: blog.updatedAt.toISOString(),
-  }));
+
+  try {
+    await connectToDatabase();
+
+    const filter: Record<string, unknown> = { ...getPublishedBlogFilter() };
+    if (options?.categorySlug) {
+      filter.category = options.categorySlug;
+    }
+
+    let query = Blog.find(filter).sort({ createdAt: -1 }).lean();
+    if (options?.limit) {
+      query = query.limit(options.limit);
+    }
+
+    const blogs = await query;
+    return blogs.map((blog) => ({
+      ...blog,
+      _id: blog._id.toString(),
+      createdAt: blog.createdAt.toISOString(),
+      updatedAt: blog.updatedAt.toISOString(),
+    }));
+  } catch (error) {
+    console.error("Failed to fetch published blogs:", error);
+    return [];
+  }
 }
 
 export async function getLatestPublishedBlogs(count = 3) {
-  return getPublishedBlogs(count);
+  return getPublishedBlogs({ limit: count });
 }

@@ -1,16 +1,8 @@
 import Link from "next/link";
 import { ArrowRight, Calendar } from "lucide-react";
 import { getLatestPublishedBlogs } from "@/lib/blogs";
-import connectToDatabase from "@/lib/db";
-import Category from "@/models/Category";
+import { getCategoryNameBySlug } from "@/lib/categories-public";
 import BlogCoverImage from "@/components/blogs/BlogCoverImage";
-
-async function getCategoryName(slug: string): Promise<string | null> {
-  if (!slug) return null;
-  await connectToDatabase();
-  const cat = await Category.findOne({ slug }).lean();
-  return cat?.name ?? null;
-}
 
 export default async function LatestBlogPosts({
   title = "Latest Insights",
@@ -26,7 +18,7 @@ export default async function LatestBlogPosts({
   if (blogs.length === 0) return null;
 
   const categoryNames = await Promise.all(
-    blogs.map((b) => getCategoryName(b.category as string)),
+    blogs.map((b) => getCategoryNameBySlug(b.category as string)),
   );
 
   return (
