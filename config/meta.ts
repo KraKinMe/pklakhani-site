@@ -43,6 +43,14 @@ const META = {
       "Build your career at a reputable Gurugram CA firm—roles in audits, taxation, GST & advisory. Apply via WhatsApp or our online application form.",
     path: "/careers",
   },
+
+  blogs: {
+    absoluteTitle:
+      `Blogs & Insights | ${SITE.name} — CA Articles Gurugram & Delhi NCR`,
+    description:
+      "Expert articles on GST, income tax, statutory audit, payroll, and regulatory compliance from chartered accountants in Gurugram and Delhi NCR.",
+    path: "/blogs",
+  },
 } as const;
 
 const ogImage = absoluteUrl(OG_IMAGE_PATH);

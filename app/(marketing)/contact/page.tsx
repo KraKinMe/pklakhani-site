@@ -10,6 +10,7 @@ import { CONTACT_PAGE, LABELS, PAGE_HERO } from "@/config/content";
 import { SITE } from "@/config/site";
 import { CTA } from "@/config/cta";
 import { getBreadcrumbListJsonLd } from "@/config/schema";
+import LatestBlogPosts from "@/components/blogs/LatestBlogPosts";
 
 export const metadata = generateMeta("contact");
 
@@ -80,6 +81,11 @@ export default function ContactPage() {
           />
         </Container>
       </Section>
+
+      <LatestBlogPosts
+        title="From Our Blog"
+        description="Stay informed with the latest tax, audit, and compliance updates."
+      />
     </div>
   );
 }

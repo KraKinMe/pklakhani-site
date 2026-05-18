@@ -3,6 +3,7 @@ import Industries from "@/components/sections/Industries";
 import ServicesPreview from "@/components/sections/ServicesPreview";
 import FAQ from "@/components/sections/FAQ";
 import CTA from "@/components/sections/CTA";
+import LatestBlogPosts from "@/components/blogs/LatestBlogPosts";
 import JsonLd from "@/components/seo/JsonLd";
 import { generateMeta } from "@/config/meta";
 import { FAQ_HOME } from "@/config/content";
@@ -18,6 +19,7 @@ export default function Home() {
       <Industries />
       <ServicesPreview />
       <FAQ />
+      <LatestBlogPosts />
       <CTA />
     </>
   );

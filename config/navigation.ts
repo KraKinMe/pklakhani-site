@@ -5,5 +5,6 @@ export const NAVIGATION = [
   { href: "/about", label: "About" },
   { href: "/services", label: "Services" },
   { href: "/careers", label: "Careers" },
+  { href: "/blogs", label: "Blogs" },
   { href: "/contact", label: "Contact" },
 ];

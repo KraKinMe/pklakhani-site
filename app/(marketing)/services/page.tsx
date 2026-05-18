@@ -21,6 +21,7 @@ import {
   getServicesItemListJsonLd,
 } from "@/config/schema";
 
+import LatestBlogPosts from "@/components/blogs/LatestBlogPosts";
 import type { LucideIcon } from "lucide-react";
 import {
   ShieldCheck,
@@ -166,6 +167,11 @@ export default function ServicesPage() {
           </Container>
         </div>
       </Section>
+
+      <LatestBlogPosts
+        title="Related Insights"
+        description="Practical articles on audit, tax, and compliance for businesses we serve."
+      />
 
       {/* FINAL CTA */}
       <Section dark>

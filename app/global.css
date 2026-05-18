@@ -1,5 +1,41 @@
 @import "tailwindcss";
 
+@layer components {
+  .prose {
+    @apply text-gray-800 dark:text-gray-200 leading-relaxed max-w-none;
+  }
+  .prose p {
+    @apply mb-6;
+  }
+  .prose h1 {
+    @apply text-3xl font-bold mt-10 mb-4 text-gray-900 dark:text-white;
+  }
+  .prose h2 {
+    @apply text-2xl font-bold mt-8 mb-4 text-gray-900 dark:text-white;
+  }
+  .prose h3 {
+    @apply text-xl font-bold mt-6 mb-3 text-gray-900 dark:text-white;
+  }
+  .prose ul {
+    @apply list-disc list-inside mb-6 space-y-2;
+  }
+  .prose ol {
+    @apply list-decimal list-inside mb-6 space-y-2;
+  }
+  .prose li {
+    @apply ml-4;
+  }
+  .prose blockquote {
+    @apply border-l-4 border-gray-300 dark:border-gray-600 pl-4 italic text-gray-600 dark:text-gray-400 mb-6;
+  }
+  .prose a {
+    @apply text-blue-600 dark:text-blue-400 hover:underline font-medium;
+  }
+  .prose img {
+    @apply rounded-xl shadow-md my-8 mx-auto max-w-full;
+  }
+}
+
 /* Brand hex values: see config/branding.ts (keep in sync with --brand-* below). */
 
 @custom-variant dark (&:where(.dark, .dark *));
