@@ -6,6 +6,7 @@ import cloudinary from "@/lib/cloudinary";
 import { isRequestAuthenticated } from "@/lib/auth";
 import { sanitizeBlogHtml } from "@/lib/sanitize";
 import { revalidateBlogPaths } from "@/lib/revalidate-blog";
+import { notifyGoogleUrlUpdated, notifyGoogleUrlDeleted } from "@/lib/indexing";
 
 export async function GET(
   req: Request,
@@ -60,6 +61,12 @@ export async function PUT(
       body.content = sanitizeBlogHtml(body.content);
     }
 
+    if (body.content && (!body.excerpt || body.excerpt.trim() === "")) {
+      const plainText = body.content.replace(/<[^>]*>?/gm, " ").replace(/\s+/g, " ").trim();
+      body.excerpt = plainText.substring(0, 160);
+      if (plainText.length > 160) body.excerpt += "...";
+    }
+
     const updateDoc: {
       $set: Record<string, unknown>;
       $addToSet?: { previousSlugs: string };
@@ -78,6 +85,18 @@ export async function PUT(
     }
 
     revalidateBlogPaths(existingBlog.slug, updatedBlog.slug);
+
+    // Asynchronously notify Google
+    if (updatedBlog.isPublished) {
+      notifyGoogleUrlUpdated(`/blogs/${updatedBlog.slug}`).catch(console.error);
+    } else {
+      // If it was unpublished, tell Google to remove it
+      notifyGoogleUrlDeleted(`/blogs/${updatedBlog.slug}`).catch(console.error);
+    }
+
+    if (existingBlog.slug !== updatedBlog.slug) {
+      notifyGoogleUrlDeleted(`/blogs/${existingBlog.slug}`).catch(console.error);
+    }
 
     return NextResponse.json(updatedBlog);
   } catch (error: unknown) {
@@ -147,6 +166,9 @@ export async function DELETE(
     }
 
     revalidateBlogPaths(deletedBlog.slug);
+
+    // Asynchronously notify Google to remove the deleted URL
+    notifyGoogleUrlDeleted(`/blogs/${deletedBlog.slug}`).catch(console.error);
 
     return NextResponse.json({ message: "Deleted successfully" });
   } catch (error: unknown) {

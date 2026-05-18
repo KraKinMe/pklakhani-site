@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowRight, Calendar } from "lucide-react";
 import { generateMeta } from "@/config/meta";
 import { getPublishedBlogs } from "@/lib/blogs";
-import { getPublicCategories, getCategoryMap } from "@/lib/categories-public";
+import { getPublicCategories } from "@/lib/categories-public";
 import Breadcrumbs from "@/components/blogs/Breadcrumbs";
 import BlogCoverImage from "@/components/blogs/BlogCoverImage";
 import JsonLd from "@/components/seo/JsonLd";
@@ -26,11 +26,14 @@ export default async function BlogListPage({
   searchParams: Promise<{ category?: string }>;
 }) {
   const { category: categorySlug } = await searchParams;
-  const [blogs, categories, categoryMap] = await Promise.all([
+  const [blogs, categories] = await Promise.all([
     getPublishedBlogs({ categorySlug }),
     getPublicCategories(),
-    getCategoryMap(),
   ]);
+
+  const categoryMap = Object.fromEntries(
+    categories.map((cat) => [cat.slug, cat.name])
+  );
 
   const activeCategoryName = categorySlug
     ? categoryMap[categorySlug]

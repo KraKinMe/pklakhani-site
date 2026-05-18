@@ -8,7 +8,9 @@ export function getPublishedBlogFilter() {
   };
 }
 
-export async function getPublishedBlogs(options?: {
+import { unstable_cache } from "next/cache";
+
+async function fetchPublishedBlogs(options?: {
   limit?: number;
   categorySlug?: string;
 }) {
@@ -41,6 +43,17 @@ export async function getPublishedBlogs(options?: {
     return [];
   }
 }
+
+export const getPublishedBlogs = unstable_cache(
+  async (options?: { limit?: number; categorySlug?: string }) => {
+    return fetchPublishedBlogs(options);
+  },
+  ["published-blogs"],
+  {
+    revalidate: 3600,
+    tags: ["blogs"],
+  }
+);
 
 export async function getLatestPublishedBlogs(count = 3) {
   return getPublishedBlogs({ limit: count });

@@ -17,13 +17,13 @@
     @apply text-xl font-bold mt-6 mb-3 text-gray-900 dark:text-white;
   }
   .prose ul {
-    @apply list-disc list-inside mb-6 space-y-2;
+    @apply list-disc list-outside mb-6 space-y-2 pl-6;
   }
   .prose ol {
-    @apply list-decimal list-inside mb-6 space-y-2;
+    @apply list-decimal list-outside mb-6 space-y-2 pl-6;
   }
   .prose li {
-    @apply ml-4;
+    @apply pl-1;
   }
   .prose blockquote {
     @apply border-l-4 border-gray-300 dark:border-gray-600 pl-4 italic text-gray-600 dark:text-gray-400 mb-6;
