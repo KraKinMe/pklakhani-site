@@ -3,12 +3,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { toast } from "sonner";
 import { adminFetch } from "@/lib/admin-fetch";
 
-export type CategoryOption = { _id: string; name: string; slug: string };
-
-export type QuillEditor = {
-  getSelection?: () => { index: number };
-  insertEmbed?: (index: number, type: string, url: string) => void;
-};
+import type { CategoryOption, QuillEditor } from "@/types/blog";
 
 export function useBlogEditor() {
   const router = useRouter();

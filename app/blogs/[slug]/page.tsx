@@ -3,7 +3,7 @@ import { notFound, permanentRedirect } from "next/navigation";
 import connectToDatabase, { isDatabaseConfigured } from "@/lib/db";
 import Blog from "@/models/Blog";
 import JsonLd from "@/components/seo/JsonLd";
-import { getBreadcrumbListJsonLd } from "@/config/schema";
+import { getBreadcrumbListJsonLd, getBlogPostJsonLd } from "@/config/schema";
 import { getSiteUrl } from "@/config/site";
 import { absoluteUrl, OG_IMAGE_PATH } from "@/config/seo";
 import { getPublishedBlogFilter } from "@/lib/blogs";
@@ -133,7 +133,6 @@ export default async function BlogPostPage({
   }
 
   const siteUrl = getSiteUrl().replace(/\/+$/, "");
-  const postUrl = `${siteUrl}/blogs/${blog.slug}`;
   const safeContent = sanitizeBlogHtml(blog.content as string);
   const plainText = safeContent.replace(/<[^>]*>?/gm, " ");
   const wordCount = plainText.split(/\s+/).filter(Boolean).length;
@@ -148,38 +147,15 @@ export default async function BlogPostPage({
     { name: blog.title as string, path: `/blogs/${blog.slug}` },
   ];
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    headline: blog.title,
-    description: blog.excerpt,
-    image: blog.coverImage || absoluteUrl(OG_IMAGE_PATH),
-    datePublished: blog.createdAt,
-    dateModified: blog.updatedAt,
-    inLanguage: "en-IN",
-    wordCount,
-    articleSection: blog.categoryName || "Chartered Accountancy",
-    keywords: blog.categoryName
-      ? `${blog.categoryName}, chartered accountant, Gurugram, tax compliance`
-      : "chartered accountant, Gurugram, tax compliance",
-    author: {
-      "@type": "Organization",
-      name: "P.K. Lakhani & Co.",
-      url: siteUrl,
-    },
-    publisher: {
-      "@type": "Organization",
-      name: "P.K. Lakhani & Co.",
-      logo: {
-        "@type": "ImageObject",
-        url: absoluteUrl(OG_IMAGE_PATH),
-      },
-    },
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": postUrl,
-    },
-  };
+  const jsonLd = getBlogPostJsonLd({
+    title: blog.title as string,
+    excerpt: blog.excerpt,
+    coverImage: blog.coverImage as string | undefined,
+    createdAt: blog.createdAt,
+    updatedAt: blog.updatedAt,
+    categoryName: blog.categoryName || undefined,
+    slug: blog.slug,
+  }, wordCount);
 
   const uiBreadcrumbs = [
     { label: "Home", href: "/" },

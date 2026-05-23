@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { Image as ImageIcon, Plus } from "lucide-react";
-import type { CategoryOption, QuillEditor } from "../hooks/useBlogEditor";
+import type { CategoryOption, QuillEditor } from "@/types/blog";
 
 const ReactQuill = dynamic(() => import("react-quill-new"), {
   ssr: false,

@@ -153,3 +153,49 @@ export function getSiteJsonLdGraph() {
     ],
   };
 }
+
+export function getBlogPostJsonLd(blog: {
+  title: string;
+  excerpt: string;
+  coverImage?: string;
+  createdAt: string;
+  updatedAt: string;
+  categoryName?: string;
+  slug: string;
+}, wordCount: number) {
+  const siteUrl = getSiteUrl().replace(/\/+$/, "");
+  const postUrl = `${siteUrl}/blogs/${blog.slug}`;
+  
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: blog.title,
+    description: blog.excerpt,
+    image: blog.coverImage || absoluteUrl(OG_IMAGE_PATH),
+    datePublished: blog.createdAt,
+    dateModified: blog.updatedAt,
+    inLanguage: "en-IN",
+    wordCount,
+    articleSection: blog.categoryName || "Chartered Accountancy",
+    keywords: blog.categoryName
+      ? `${blog.categoryName}, chartered accountant, Gurugram, tax compliance`
+      : "chartered accountant, Gurugram, tax compliance",
+    author: {
+      "@type": "Organization",
+      name: "P.K. Lakhani & Co.",
+      url: siteUrl,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "P.K. Lakhani & Co.",
+      logo: {
+        "@type": "ImageObject",
+        url: absoluteUrl(OG_IMAGE_PATH),
+      },
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": postUrl,
+    },
+  };
+}

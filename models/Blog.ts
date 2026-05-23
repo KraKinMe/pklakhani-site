@@ -31,6 +31,9 @@ const BlogSchema: Schema = new Schema(
   }
 );
 
+// Compound index for optimizing the main blog list query:
+BlogSchema.index({ isPublished: 1, category: 1, createdAt: -1 });
+
 // Prevent mongoose from compiling the model multiple times in development
 // and clear the cache to ensure schema updates (like previousSlugs) are picked up by Next.js HMR
 if (mongoose.models.Blog) {
